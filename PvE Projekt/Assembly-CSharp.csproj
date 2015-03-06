@@ -53,6 +53,7 @@
      <None Include="Assets\Scrips\Ai\_bhiasd.txt" />
      <None Include="Assets\Scrips\Input\dvfjk.txt" />
      <None Include="Assets\Art_Staff\_test.txt" />
+     <None Include="Assets\Prefabs\Test_Prefabs\cdjkikfg.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
