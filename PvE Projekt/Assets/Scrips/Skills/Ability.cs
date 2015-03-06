@@ -12,9 +12,16 @@ public abstract class Ability : MonoBehaviour
     [SerializeField]
     protected string name = "";
     public string Name { get { return name; } }
-
+    /// <summary>
+    /// Visual effect of the ability
+    /// </summary>
     [SerializeField]
     protected GameObject vfx = null;
+    /// <summary>
+    /// Origin of the vfx
+    /// </summary>
+    [SerializeField]
+    protected Transform spawnPoint = null;
 
     /// <summary>
     /// Upper range limit of the ability
