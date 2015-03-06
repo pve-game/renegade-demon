@@ -7,8 +7,11 @@ public class Move : MonoBehaviour {
     public float acceleration = 8.5f;
     public float gravity = -9.81f;
     public float jumpSpeed = 20.0f;
+    public float dampingSpeed = 5.0f;
 
+    Quaternion m_targetRotation = Quaternion.identity;
     CharacterController m_charController;
+
     float m_actSpeed = 0.0f;
     float m_ySpeed = 0.0f;
     float m_groundNormal = 0.0f;
@@ -63,5 +66,6 @@ public class Move : MonoBehaviour {
 
         m_isGrounded = (transform.position.y < m_groundNormal + m_charController.stepOffset) &&
                        (transform.position.y > m_groundNormal - m_charController.stepOffset);
+
     }
 }
