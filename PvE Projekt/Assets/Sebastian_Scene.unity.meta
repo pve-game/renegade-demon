@@ -1,8 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< .mine
+guid: 6b4e1bd7e14fbf8469ae40e09d53d71e
+=======
 guid: 6063afee115326a4fb13fa5bc17c5289
 timeCreated: 1425634096
 licenseType: Free
+>>>>>>> .r9
 DefaultImporter:
   userData: 
-  assetBundleName: 
-  assetBundleVariant: 
