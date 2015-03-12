@@ -21,6 +21,7 @@ public class Health : MonoBehaviour
 
     public delegate void HealthChanged(float percentage);
     private HealthChanged onHealthChanged = null;
+    public HealthChanged OnHealthChanged { get { return onHealthChanged; } }
     /// <summary>
     /// changes the value of the current health.
     /// The new health is clamped to fit [0, maximumHealth]
