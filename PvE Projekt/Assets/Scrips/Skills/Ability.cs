@@ -10,8 +10,8 @@ public abstract class Ability : MonoBehaviour
     /// Ability name for displaying
     /// </summary>
     [SerializeField]
-    protected string name = "";
-    public string Name { get { return name; } }
+    protected string displayName = "";
+    public string DisplayName { get { return displayName; } }
     /// <summary>
     /// Visual effect of the ability
     /// </summary>
@@ -48,7 +48,7 @@ public abstract class Ability : MonoBehaviour
     
     public void Awake()
     {
-        InitializeVFX();
+        Initialize();
     }
 
     public virtual void Use()
@@ -56,6 +56,6 @@ public abstract class Ability : MonoBehaviour
         //save the time at the beginning of the frame
         timeSinceLastUse = Time.time;
     }
-    protected abstract void InitializeVFX();
+    protected abstract void Initialize();
 
 }

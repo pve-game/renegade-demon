@@ -7,14 +7,14 @@ public class LinearMovement : MonoBehaviour
     /// Type for movement completion
     /// </summary>
     public delegate void MovementFinished();
-    private MovementFinished movementCompleted;
+    private MovementFinished movementCompleted = null;
     public MovementFinished OnMovementCompleted { get { return movementCompleted; } }
     /// <summary>
     /// Should the movement take place
     /// </summary>
     [SerializeField]
-    private bool active = false;
-    public bool Active { get { return active; } set { active = value; } }
+    private bool isActive = false;
+    public bool IsActive { get { return isActive; } set { isActive = value; } }
 
     /// <summary>
     /// Velocity of the movement
@@ -36,7 +36,7 @@ public class LinearMovement : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        if (active)
+        if (isActive)
         {
             transform.position = Vector3.Lerp(start, destination, percentage);
             percentage += speed * Time.deltaTime;
@@ -44,7 +44,8 @@ public class LinearMovement : MonoBehaviour
             {
                 if (movementCompleted != null)
                     movementCompleted();
-                active = false;
+                isActive = false;
+                StopMovement();
             }
         }
     }
@@ -58,8 +59,16 @@ public class LinearMovement : MonoBehaviour
     {
         start = begin;
         destination = end;
-        active = true;
+        isActive = true;
         percentage = 0f;
+    }
+
+    public void StopMovement()
+    {
+        isActive = false;
+        percentage = 0f;
+        //hide the effect below the ground
+        transform.Translate(0f, 0f, -100f);
     }
 
 
