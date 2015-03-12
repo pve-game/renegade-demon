@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
     public bool Alive { get { return currentHealth > 0; } }
 
     public delegate void HealthChanged(float percentage);
-    private HealthChanged onHealthChanged = null;
+    public HealthChanged onHealthChanged;
     public HealthChanged OnHealthChanged { get { return onHealthChanged; } }
     /// <summary>
     /// changes the value of the current health.

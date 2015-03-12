@@ -12,6 +12,12 @@ public class Shot : Ability
     private GameObject bullet = null;
     [SerializeField]
     private int vfxNumber = 10;
+    /// <summary>
+    /// Damage that the shot does
+    /// </summary>
+    [SerializeField]
+    private int damage = 100;
+
     ObjectPool pool = null;
 
    
@@ -34,6 +40,10 @@ public class Shot : Ability
     {
         bullet = Instantiate(vfx, transform.position, transform.rotation) as GameObject;
         bullet.AddComponent<LinearMovement>();
+        bullet.AddComponent<DamageOnHit>();
+        DamageOnHit doh = bullet.GetComponent<DamageOnHit>();
+        doh.Damage = damage;
+        doh.onHitOccured += bullet.GetComponent<LinearMovement>().StopMovement;
         //pool = new ObjectPool(vfxNumber);
         //for (int i = 0; i < vfxNumber; i++)
         //{
