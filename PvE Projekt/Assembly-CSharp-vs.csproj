@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scrips\Ai\ColliderDetection.cs" />
+     <Compile Include="Assets\Scrips\Combat\Health.cs" />
      <Compile Include="Assets\Scrips\Movement\LinearMovement.cs" />
      <Compile Include="Assets\Scrips\Movement\Move.cs" />
      <Compile Include="Assets\Scrips\Skills\Ability.cs" />
