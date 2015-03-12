@@ -20,9 +20,11 @@ public class Move : MonoBehaviour {
     float h = 0.0f;
     float v = 0.0f;
 
+
     private void Start()
     {
         m_charController = GetComponent<CharacterController>();
+        m_targetRotation = transform.rotation;
     }
 
     private void Update()
@@ -66,6 +68,25 @@ public class Move : MonoBehaviour {
 
         m_isGrounded = (transform.position.y < m_groundNormal + m_charController.stepOffset) &&
                        (transform.position.y > m_groundNormal - m_charController.stepOffset);
+
+        Vector3 mouse = Input.mousePosition;
+        Ray mouseRay = Camera.main.ScreenPointToRay(mouse);
+        RaycastHit hit;
+
+        Vector3 mouseW = transform.position;
+        if (Physics.Raycast(mouseRay, out hit))
+            mouseW = hit.point;
+
+        mouseW.y = transform.position.y;
+
+        Vector3 dir = (mouseW - transform.position).normalized;
+
+        if (dir != Vector3.zero)
+            m_targetRotation = Quaternion.LookRotation(dir);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation,
+            m_targetRotation, dampingSpeed * Time.deltaTime);
+
 
     }
 }
