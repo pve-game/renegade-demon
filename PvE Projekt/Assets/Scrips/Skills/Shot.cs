@@ -4,7 +4,7 @@ using System.Collections;
 /// <summary>
 /// Simple shot ability
 /// </summary>
-public class Shot : Ability 
+public class Shot : AttackAbility 
 {
     /// <summary>
     /// holds the bullet instance
@@ -12,11 +12,7 @@ public class Shot : Ability
     private GameObject bullet = null;
     [SerializeField]
     private int vfxNumber = 10;
-    /// <summary>
-    /// Damage that the shot does
-    /// </summary>
-    [SerializeField]
-    private int damage = 100;
+    
 
     ObjectPool pool = null;
 
