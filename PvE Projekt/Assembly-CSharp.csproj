@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scrips\Movement\LinearMovement.cs" />
      <Compile Include="Assets\Scrips\Movement\Move.cs" />
      <Compile Include="Assets\Scrips\Skills\Ability.cs" />
+     <Compile Include="Assets\Scrips\Skills\AoE.cs" />
      <Compile Include="Assets\Scrips\Skills\Shot.cs" />
      <Compile Include="Assets\Scrips\Skills\_moveTest.cs" />
      <Compile Include="Assets\Scrips\Spawning\Respawn.cs" />
