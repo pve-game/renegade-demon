@@ -34,6 +34,7 @@ public class Move : MonoBehaviour {
             h = Input.GetAxis("Horizontal") * speed;
             v = Input.GetAxis("Vertical");
         }
+      
         if ((v > 0.1f || v < -0.1f) && m_actSpeed <= speed && m_actSpeed >= -speed)
         {
             m_actSpeed += v * acceleration * Time.deltaTime;
@@ -64,8 +65,13 @@ public class Move : MonoBehaviour {
         if (Input.GetButtonDown("Jump") && m_isGrounded)
             m_ySpeed += jumpSpeed;
 
-        m_charController.Move(new Vector3(h, m_ySpeed, m_actSpeed) * Time.deltaTime);
-
+        //Vector3 mv = new Vector3(h, m_ySpeed, transform.forward.z * m_actSpeed); //new Vector3(h, m_ySpeed, m_actSpeed)
+        Vector3 mv = transform.forward * m_actSpeed;
+        mv.y = m_ySpeed;
+        mv += transform.right * h;
+        Debug.Log(v);
+        m_charController.Move(mv * Time.deltaTime);
+        //Debug.Log(transform.TransformDirection(mv));
         m_isGrounded = (transform.position.y < m_groundNormal + m_charController.stepOffset) &&
                        (transform.position.y > m_groundNormal - m_charController.stepOffset);
 
