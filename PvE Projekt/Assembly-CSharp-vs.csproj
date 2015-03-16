@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scrips\Ai\ColliderDetection.cs" />
+     <Compile Include="Assets\Scrips\Camera\ThirdPersonCamera.cs" />
      <Compile Include="Assets\Scrips\Combat\Collect.cs" />
      <Compile Include="Assets\Scrips\Combat\DamageOnHit.cs" />
      <Compile Include="Assets\Scrips\Combat\Health.cs" />
@@ -55,7 +56,11 @@
      <Compile Include="Assets\Scrips\Management\ObjectPool.cs" />
      <Compile Include="Assets\Scrips\Movement\LinearMovement.cs" />
      <Compile Include="Assets\Scrips\Movement\Move.cs" />
+<<<<<<< .mine
+     <Compile Include="Assets\Scrips\Movement\Test.cs" />
+=======
      <Compile Include="Assets\Scrips\Movement\OrbitingMovement.cs" />
+>>>>>>> .r19
      <Compile Include="Assets\Scrips\Skills\Ability.cs" />
      <Compile Include="Assets\Scrips\Skills\AoE.cs" />
      <Compile Include="Assets\Scrips\Skills\AttackAbility.cs" />

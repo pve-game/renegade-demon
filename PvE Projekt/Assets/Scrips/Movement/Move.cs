@@ -65,13 +65,11 @@ public class Move : MonoBehaviour {
         if (Input.GetButtonDown("Jump") && m_isGrounded)
             m_ySpeed += jumpSpeed;
 
-        //Vector3 mv = new Vector3(h, m_ySpeed, transform.forward.z * m_actSpeed); //new Vector3(h, m_ySpeed, m_actSpeed)
         Vector3 mv = transform.forward * m_actSpeed;
-        mv.y = m_ySpeed;
-        mv += transform.right * h;
-        Debug.Log(v);
-        m_charController.Move(mv * Time.deltaTime);
-        //Debug.Log(transform.TransformDirection(mv));
+        Vector3 movement = new Vector3(mv.x, m_ySpeed, mv.z) + transform.right * h;
+        m_charController.Move(movement * Time.deltaTime);
+
+
         m_isGrounded = (transform.position.y < m_groundNormal + m_charController.stepOffset) &&
                        (transform.position.y > m_groundNormal - m_charController.stepOffset);
 
@@ -87,7 +85,7 @@ public class Move : MonoBehaviour {
 
         Vector3 dir = (mouseW - transform.position).normalized;
 
-        if (dir != Vector3.zero)
+        if (dir != Vector3.zero && !(hit.transform.gameObject.layer == LayerMask.NameToLayer("Player")))
             m_targetRotation = Quaternion.LookRotation(dir);
 
         transform.rotation = Quaternion.Slerp(transform.rotation,
