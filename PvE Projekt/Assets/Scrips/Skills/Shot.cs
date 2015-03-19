@@ -16,7 +16,7 @@ public class Shot : AttackAbility
 
     ObjectPool pool = null;
 
-   
+       
     public override void Use()
     {
         //bullet = pool.GetObject();
@@ -34,12 +34,35 @@ public class Shot : AttackAbility
 
     protected override void Initialize()
     {
+        //shot gets a shot prefab that needs to be instantiated
         bullet = Instantiate(vfx, transform.position, transform.rotation) as GameObject;
+
+        //rigidbody is needed to perform collision detection
+        //as we might re-use the bullet prefab for other purposes
+        //the rigidbody is added dynamically
+        Rigidbody rb = bullet.AddComponent<Rigidbody>();
+        //disable gravity as the shot should fly straight forward
+        rb.useGravity = false;
+
+        //on the prefab there should be a collider prepared
+        //to fit the size of the model
+        Collider c = bullet.GetComponent<Collider>();
+        if (c!= null)
+        {
+            c.enabled = true;
+        }
+
+        //straight forward movement
         bullet.AddComponent<LinearMovement>();
-        bullet.AddComponent<DamageOnHit>();
-        DamageOnHit doh = bullet.GetComponent<DamageOnHit>();
+
+        //apply damage on hit
+        DamageOnHit doh = bullet.AddComponent<DamageOnHit>();
+        //check only specified layer
+        doh.CollisionLayer = collisionLayer;
         doh.Damage = damage;
+        //stop movement on hit
         doh.onHitOccured += bullet.GetComponent<LinearMovement>().StopMovement;
+
         //pool = new ObjectPool(vfxNumber);
         //for (int i = 0; i < vfxNumber; i++)
         //{

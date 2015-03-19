@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Rotates an object around a center
+/// </summary>
+/// <remarks>
+/// Author: Martin Wettig
+/// </remarks>
 public class OrbitingMovement : MonoBehaviour
 {
     /// <summary>
@@ -24,31 +30,35 @@ public class OrbitingMovement : MonoBehaviour
     /// Movement speed
     /// </summary>
     [SerializeField]
-    private float speed = 20f;
+    private float speed = 1f;
     public float Speed { get { return speed; } set { speed = Mathf.Max(value, 0f); } }
     /// <summary>
-    /// Time until movement termination
+    /// Time until movement termination.
+    /// Default: 0, i.e. no termination
     /// </summary>
     [SerializeField]
-    private float duration = 20f;
+    private float duration = 0f;
     public float Duration { get { return duration; } set { duration = Mathf.Max(value, 0f); } }
 
     private float startTime = 0f;
-    private Vector3 point = Vector3.zero;
+
     // Update is called once per frame
     void Update()
     {
-        //if the movement should be applies and its application time is lower than the specified duration
+        //if the movement should be applied and its application time is lower than the specified duration
         if (isActive && (Time.time - startTime) < duration)
         {
             transform.RotateAround(center.position, Vector3.up, speed * Time.deltaTime);
             //from unity answers
-//             orbitDesiredPosition = (thisTransform.position - objectToOrbit.position).normalized * orbitRadius + objectToOrbit.position;
-//thisTransform.position = Vector3.Slerp(thisTransform.position, orbitDesiredPosition, Time.deltaTime * orbitRadiusCorrectionSpeed)
+            Vector3 clampedOrbit = (transform.position - center.position).normalized * distance + center.position;
+            transform.position = Vector3.Slerp(transform.position,
+                clampedOrbit, speed * Time.deltaTime);
+
         }
         else
         {
             isActive = false;
+            transform.Translate(0f, 0f, -100f);
         }
     }
 
@@ -58,5 +68,4 @@ public class OrbitingMovement : MonoBehaviour
         startTime = Time.time;
         isActive = true;
     }
-
 }

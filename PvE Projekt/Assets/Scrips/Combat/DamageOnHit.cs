@@ -17,8 +17,8 @@ public class DamageOnHit : MonoBehaviour
     /// Determine which layer should be checked for collisions
     /// </summary>
     private int collisionLayer = 0;
-    public string collisionLayerName = "Default";
-
+    //public string collisionLayerName = "Default";
+    public int CollisionLayer { get { return collisionLayer; } set { collisionLayer = value; } }
     /// <summary>
     /// Notify registered classes if a hit occured
     /// </summary>
@@ -26,10 +26,10 @@ public class DamageOnHit : MonoBehaviour
     public HitOccured onHitOccured;
     public HitOccured OnHitOccured { get { return onHitOccured; } }
 
-    public void Awake()
-    {
-        collisionLayer = LayerMask.NameToLayer(collisionLayerName);
-    }
+    //public void Awake()
+    //{
+    //    collisionLayer = LayerMask.NameToLayer(collisionLayerName);
+    //}
 
     public void OnTriggerEnter(Collider col)
     {
@@ -37,9 +37,12 @@ public class DamageOnHit : MonoBehaviour
         if (other.layer == collisionLayer)
         {
             Health h = other.GetComponent<Health>();
-            h.addHealth(-damage);
-            if (onHitOccured != null)
-                onHitOccured();
+            if (h != null)
+            {
+                h.addHealth(-damage);
+                if (onHitOccured != null)
+                    onHitOccured();
+            }
         }
     }
 }

@@ -43,9 +43,17 @@ public abstract class Ability : MonoBehaviour
     protected string description = "";
     public string Description { get { return description; } }
 
-    private float timeSinceLastUse = 0f;
-    public bool Ready { get { return Time.time - timeSinceLastUse > cooldown; } }
+    protected float timeSinceLastUse = 0f;
     
+    public bool Ready { get { return Time.time - timeSinceLastUse > cooldown; } }
+
+    /// <summary>
+    /// Duration represents how long a spell lasts
+    /// </summary>
+    [SerializeField]
+    private float duration = 0f;
+    public float Duration { get { return duration; } set { duration = Mathf.Max(value, 0f); } }
+
     public void Awake()
     {
         Initialize();

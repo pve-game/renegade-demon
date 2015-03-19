@@ -30,6 +30,7 @@ public class Health : MonoBehaviour
     public void addHealth(int value)
     {
         currentHealth = Mathf.Clamp(currentHealth + value, 0, maximumHealth);
+        Debug.Log(name + "health: " + currentHealth);
         if (onHealthChanged != null)
             onHealthChanged(currentHealth / (float)maximumHealth);
     }
