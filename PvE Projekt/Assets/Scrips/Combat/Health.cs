@@ -21,7 +21,8 @@ public class Health : MonoBehaviour
 
     public delegate void HealthChanged(float percentage);
     public HealthChanged onHealthChanged;
-    public HealthChanged OnHealthChanged { get { return onHealthChanged; } }
+    //public HealthChanged OnHealthChanged { get { return onHealthChanged; } }
+
     /// <summary>
     /// changes the value of the current health.
     /// The new health is clamped to fit [0, maximumHealth]
@@ -30,7 +31,7 @@ public class Health : MonoBehaviour
     public void addHealth(int value)
     {
         currentHealth = Mathf.Clamp(currentHealth + value, 0, maximumHealth);
-        Debug.Log(name + "health: " + currentHealth);
+        Debug.Log("health%: " + currentHealth / (float)maximumHealth);
         if (onHealthChanged != null)
             onHealthChanged(currentHealth / (float)maximumHealth);
     }

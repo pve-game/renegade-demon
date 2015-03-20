@@ -48,9 +48,18 @@ public class OrbitingMovement : MonoBehaviour
         //if the movement should be applied and its application time is lower than the specified duration
         if (isActive && (Time.time - startTime) < duration)
         {
+            //orbit around a center point
             transform.RotateAround(center.position, Vector3.up, speed * Time.deltaTime);
-            //from unity answers
-            Vector3 clampedOrbit = (transform.position - center.position).normalized * distance + center.position;
+            //assure that the orbiting object sticks to the x-z plane
+            Vector3 pos = transform.position;
+            //put the orbit on the same height as the center            
+            pos.y = center.position.y;
+  
+            //Vector3 clampedOrbit = (transform.position - center.position).normalized * distance + center.position;
+            //calculate the direction relative to and distance to the center
+            Vector3 clampedOrbit = (pos - center.position).normalized * distance + center.position;
+            
+            //move the object
             transform.position = Vector3.Slerp(transform.position,
                 clampedOrbit, speed * Time.deltaTime);
 

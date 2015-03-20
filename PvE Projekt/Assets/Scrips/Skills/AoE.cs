@@ -31,15 +31,17 @@ public class AoE : AttackAbility
         om.Speed = speed;
         om.Distance = radius;
         om.Duration = Duration;
+        base.Initialize();
     }
 
     private void ApplyDamage()
     {
         //TODO: fix double intersection bug -> damage is applied twice
         Collider[] hits = Physics.OverlapSphere(transform.position, radius, 1 << collisionLayer);
-        Debug.Log("hits: " + hits.Length);
+        Debug.Log(hits.Length);
         foreach (Collider col in hits)
         {
+            Debug.Log(col.name);
             Health h = col.gameObject.GetComponent<Health>();
             if (h != null)
                 h.addHealth(-damage);

@@ -9,6 +9,12 @@ using System.Collections;
 /// </remarks>
 public class DestroyOnDeath : MonoBehaviour
 {
+    /// <summary>
+    /// Health percentage threshold that determines death
+    /// </summary>
+    [SerializeField]
+    private float threshold = 0.00001f;
+
     // Use this for initialization
     void Start()
     {
@@ -16,8 +22,13 @@ public class DestroyOnDeath : MonoBehaviour
         health.onHealthChanged += DestroySelf;
     }
 
+    /// <summary>
+    /// Remove object if health is zero
+    /// </summary>
+    /// <param name="p">Health percentage</param>
     public void DestroySelf(float p)
     {
-        Destroy(gameObject);
+        if (p < threshold)
+            Destroy(gameObject);
     }
 }

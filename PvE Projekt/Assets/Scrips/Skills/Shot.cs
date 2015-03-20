@@ -34,6 +34,8 @@ public class Shot : AttackAbility
 
     protected override void Initialize()
     {
+        //prepare appropriate collision layer first
+        base.Initialize();
         //shot gets a shot prefab that needs to be instantiated
         bullet = Instantiate(vfx, transform.position, transform.rotation) as GameObject;
 
@@ -57,6 +59,7 @@ public class Shot : AttackAbility
 
         //apply damage on hit
         DamageOnHit doh = bullet.AddComponent<DamageOnHit>();
+       
         //check only specified layer
         doh.CollisionLayer = collisionLayer;
         doh.Damage = damage;
