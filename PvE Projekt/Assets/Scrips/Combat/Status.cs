@@ -6,8 +6,8 @@ public class Status : MonoBehaviour {
    public enum ObjectStatus
     {
         Stunned,
-        Runing,
-        Idel,
+        Running,
+        Idle,
         Healing,
         None
     }
