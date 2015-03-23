@@ -65,7 +65,14 @@ public class Shot : AttackAbility
         doh.Damage = damage;
         //stop movement on hit
         doh.onHitOccured += bullet.GetComponent<LinearMovement>().StopMovement;
-
+        
+        //if skill can level
+        if (skillExperience != null)
+        {
+            //get experience on successful hit
+            doh.onHitOccured += GainExperience;
+            skillExperience.onLevelChanged += LevelUpHandler;
+        }
         //pool = new ObjectPool(vfxNumber);
         //for (int i = 0; i < vfxNumber; i++)
         //{
@@ -74,5 +81,13 @@ public class Shot : AttackAbility
         //    go.AddComponent<LinearMovement>();
         //    pool.AddObject(go);
         //}
+    }
+
+    protected override void LevelUpHandler(int level)
+    {
+        base.LevelUpHandler(level);
+        bullet.GetComponent<DamageOnHit>().Damage = damage;
+        Debug.Log(damage);
+        Debug.Log(skillExperience.CurrentLevel);
     }
 }

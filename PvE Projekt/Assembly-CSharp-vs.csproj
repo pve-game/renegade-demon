@@ -48,9 +48,11 @@
   <ItemGroup>
      <Compile Include="Assets\Scrips\Ai\ColliderDetection.cs" />
      <Compile Include="Assets\Scrips\Camera\ThirdPersonCamera.cs" />
+     <Compile Include="Assets\Scrips\Combat\Breakpoint.cs" />
      <Compile Include="Assets\Scrips\Combat\Collect.cs" />
      <Compile Include="Assets\Scrips\Combat\DamageOnHit.cs" />
      <Compile Include="Assets\Scrips\Combat\DestroyOnDeath.cs" />
+     <Compile Include="Assets\Scrips\Combat\Experience.cs" />
      <Compile Include="Assets\Scrips\Combat\Health.cs" />
      <Compile Include="Assets\Scrips\Combat\Status.cs" />
      <Compile Include="Assets\Scrips\Item\Item.cs" />
@@ -63,6 +65,7 @@
      <Compile Include="Assets\Scrips\Skills\AoE.cs" />
      <Compile Include="Assets\Scrips\Skills\AttackAbility.cs" />
      <Compile Include="Assets\Scrips\Skills\Shot.cs" />
+     <Compile Include="Assets\Scrips\Skills\TalentSystem.cs" />
      <Compile Include="Assets\Scrips\Skills\_moveTest.cs" />
      <Compile Include="Assets\Scrips\Spawning\Respawn.cs" />
      <Compile Include="Assets\Scrips\Spawning\Respawner.cs" />

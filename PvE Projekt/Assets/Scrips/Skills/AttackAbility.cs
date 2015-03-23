@@ -23,6 +23,17 @@ public class AttackAbility : Ability
 
     protected override void Initialize()
     {
+        base.Initialize();
         collisionLayer = LayerMask.NameToLayer(collisionLayerName);
+    }
+
+    /// <summary>
+    /// Callback function for level up.
+    /// Increases damage by 10% per level by default.
+    /// </summary>
+    /// <param name="level">reached level</param>
+    protected override void LevelUpHandler(int level)
+    {
+        damage = damage + damage * level / 10;
     }
 }

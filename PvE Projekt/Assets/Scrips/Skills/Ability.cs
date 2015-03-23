@@ -54,6 +54,16 @@ public abstract class Ability : MonoBehaviour
     private float duration = 0f;
     public float Duration { get { return duration; } set { duration = Mathf.Max(value, 0f); } }
 
+    /// <summary>
+    /// Detemines whether the ability can improve when used
+    /// </summary>
+    [SerializeField]
+    private bool canLevel = false;
+ 
+    protected Experience skillExperience = null;
+   
+    [SerializeField]
+    protected int experiencePerSuccessfulUsage = 1;
     public void Awake()
     {
         Initialize();
@@ -64,6 +74,22 @@ public abstract class Ability : MonoBehaviour
         //save the time at the beginning of the frame
         timeSinceLastUse = Time.time;
     }
-    protected abstract void Initialize();
+    protected void GainExperience()
+    {
+        if (skillExperience != null)
+        {
+            skillExperience.AddExperience(experiencePerSuccessfulUsage);
+            Debug.Log("currentExp: " + skillExperience.CurrentExperience);
+        }
+    }
 
+    protected virtual void Initialize()
+    {
+        if (canLevel)
+            skillExperience = new Experience();
+    }
+
+    protected abstract void LevelUpHandler(int level);
+
+    
 }

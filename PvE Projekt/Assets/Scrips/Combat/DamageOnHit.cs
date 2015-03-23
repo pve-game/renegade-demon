@@ -24,12 +24,6 @@ public class DamageOnHit : MonoBehaviour
     /// </summary>
     public delegate void HitOccured();
     public HitOccured onHitOccured;
-    public HitOccured OnHitOccured { get { return onHitOccured; } }
-
-    //public void Awake()
-    //{
-    //    collisionLayer = LayerMask.NameToLayer(collisionLayerName);
-    //}
 
     public void OnTriggerEnter(Collider col)
     {
