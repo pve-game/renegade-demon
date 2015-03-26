@@ -37,3 +37,4 @@ public class AttackAbility : Ability
         damage = damage + damage * level / 10;
     }
 }
+
