@@ -7,8 +7,8 @@ public class LinearMovement : MonoBehaviour
     /// Type for movement completion
     /// </summary>
     public delegate void MovementFinished();
-    private MovementFinished movementCompleted = null;
-    public MovementFinished OnMovementCompleted { get { return movementCompleted; } }
+    public MovementFinished movementCompleted = null;
+
     /// <summary>
     /// Should the movement take place
     /// </summary>
@@ -66,9 +66,12 @@ public class LinearMovement : MonoBehaviour
     public void StopMovement()
     {
         isActive = false;
+        gameObject.SetActive(false);
         percentage = 0f;
         //hide the effect below the ground
-        transform.Translate(0f, 0f, -100f);
+        //transform.Translate(0f, 0f, -100f);
+        if (movementCompleted != null)
+            movementCompleted();
     }
 
 

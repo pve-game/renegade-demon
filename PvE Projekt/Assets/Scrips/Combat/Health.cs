@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 /// <summary>
 /// Health component for any object
@@ -22,7 +23,7 @@ public class Health : MonoBehaviour
     public delegate void HealthChanged(float percentage);
     public HealthChanged onHealthChanged;
     //public HealthChanged OnHealthChanged { get { return onHealthChanged; } }
-
+    public UnityEvent test;
     /// <summary>
     /// changes the value of the current health.
     /// The new health is clamped to fit [0, maximumHealth]

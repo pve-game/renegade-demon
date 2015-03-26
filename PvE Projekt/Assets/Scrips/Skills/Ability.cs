@@ -79,7 +79,6 @@ public abstract class Ability : MonoBehaviour
         if (skillExperience != null)
         {
             skillExperience.AddExperience(experiencePerSuccessfulUsage);
-            Debug.Log("currentExp: " + skillExperience.CurrentExperience);
         }
     }
 

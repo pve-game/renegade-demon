@@ -42,7 +42,6 @@ public class AoE : AttackAbility
         Collider[] hits = Physics.OverlapSphere(transform.position, radius, 1 << collisionLayer);
         foreach (Collider col in hits)
         {
-            Debug.Log(col.name);
             //get their health component if present
             Health h = col.gameObject.GetComponent<Health>();
             if (h != null)
@@ -58,7 +57,5 @@ public class AoE : AttackAbility
     protected override void LevelUpHandler(int level)
     {
         base.LevelUpHandler(level);
-        Debug.Log(damage);
-        Debug.Log(skillExperience.CurrentLevel);
     }
 }
