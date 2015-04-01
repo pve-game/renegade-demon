@@ -3,7 +3,10 @@ using System.Collections;
 
 public class ColliderDetection : MonoBehaviour
 {
-
+   [HideInInspector]
+   public bool seen = false;
+    [HideInInspector]
+   public bool heard = false;
     // Use this for initialization
     void Awake()
     {
@@ -19,26 +22,20 @@ public class ColliderDetection : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        //Debug.Log(LayerMask.LayerToName(other.gameObject.layer));
-        //if(other.gameObject.layer == LayerMask.NameToLayer("see"))
-        //{
-        //    if (other.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
-        //        Debug.Log("Saw you, Player!");
-        //}
-        
-        //if(other.gameObject.layer == LayerMask.NameToLayer("hear"))
-        //{
-        //     if (other.transform.gameObject.layer == LayerMask.NameToLayer("Player")) 
-        //        Debug.Log("Heard you, Player!");
-        //}
-
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+       if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
 
-            if (gameObject.layer == LayerMask.NameToLayer("see"))
+            if (gameObject.layer == LayerMask.NameToLayer("See"))
+            {
+                seen = true;
                 Debug.Log("Saw you, Player!");
-            if (gameObject.layer == LayerMask.NameToLayer("hear"))
+            }
+
+            if (gameObject.layer == LayerMask.NameToLayer("Hear"))
+            {
+                heard = true;
                 Debug.Log("Heard you, Player!");
+            }
         }
        
     }
