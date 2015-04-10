@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// Simple shot ability
@@ -22,6 +22,7 @@ public class Shot : AttackAbility
 
     private GameObject[] pool = null;
 
+
     public override void Use()
     {
         //bullet = pool.GetObject();
@@ -29,7 +30,8 @@ public class Shot : AttackAbility
         bullet = GetObject();
         if (bullet == null) return;
         bullet.SetActive(true);
-        bullet.GetComponent<DamageOnHit>().Damage = damage;
+        //bullet.GetComponent<DamageOnHit>().Damage = damage;
+        
         LinearMovement lm = bullet.GetComponent<LinearMovement>();
         lm.StartMovement(spawnPoint.position, spawnPoint.position + spawnPoint.forward * maximumDistance);
 
@@ -46,6 +48,16 @@ public class Shot : AttackAbility
         //prepare appropriate collision layer first
         base.Initialize();
         //pool.Initialize(vfxNumber);
+        
+        //set up the collision properties
+        impactEffects.Add(new DamageEffect(damage));
+        targetSelectors.Add(new TargetSelection());
+        InitializePool();
+
+    }
+
+    private void InitializePool()
+    {
         pool = new GameObject[vfxNumber];
         for (int i = 0; i < vfxNumber; i++)
         {
@@ -70,20 +82,33 @@ public class Shot : AttackAbility
             //straight forward movement
             bullet.AddComponent<LinearMovement>();
 
-            //apply damage on hit
-            DamageOnHit doh = bullet.AddComponent<DamageOnHit>();
+            //prepare collision handler
+            TargetSelectionOnCollision collisionSelection = bullet.AddComponent<TargetSelectionOnCollision>();
+            //add the set up target selection methods and impact effects
+            //collisionSelection.AddSelectors(targetSelectors);
+            //collisionSelection.AddEffects(impactEffects);
+            collisionSelection.Selectors = targetSelectors;
+            collisionSelection.Effects = impactEffects;
 
-            //check only specified layer
-            doh.CollisionLayer = collisionLayer;
-            doh.Damage = damage;
+            collisionSelection.CollisionLayer = collisionLayer;
             //stop movement on hit
-            doh.onHitOccured += bullet.GetComponent<LinearMovement>().StopMovement;
+            collisionSelection.onHitOccured += bullet.GetComponent<LinearMovement>().StopMovement;
+
+            ////apply damage on hit
+            //DamageOnHit doh = bullet.AddComponent<DamageOnHit>();
+
+            ////check only specified layer
+            //doh.CollisionLayer = collisionLayer;
+            //doh.Damage = damage;
+            ////stop movement on hit
+            //doh.onHitOccured += bullet.GetComponent<LinearMovement>().StopMovement;
 
             //if skill can level
             if (skillExperience != null)
             {
                 //get experience on successful hit
-                doh.onHitOccured += GainExperience;
+                //doh.onHitOccured += GainExperience;
+                collisionSelection.onHitOccured += GainExperience;
                 skillExperience.onLevelChanged += LevelUpHandler;
             }
 
@@ -93,7 +118,6 @@ public class Shot : AttackAbility
             //pool.AddObject(bullet);
             pool[i] = bullet;
         }
-
     }
 
     protected override void LevelUpHandler(int level)
@@ -116,4 +140,6 @@ public class Shot : AttackAbility
         }
         return go;
     }
+
+    
 }

@@ -54,6 +54,14 @@
      <Compile Include="Assets\Scrips\Combat\DestroyOnDeath.cs" />
      <Compile Include="Assets\Scrips\Combat\Experience.cs" />
      <Compile Include="Assets\Scrips\Combat\Health.cs" />
+     <Compile Include="Assets\Scrips\Combat\ImpactEffects\DamageEffect.cs" />
+     <Compile Include="Assets\Scrips\Combat\ImpactEffects\DamageEffectProcessor.cs" />
+     <Compile Include="Assets\Scrips\Combat\ImpactEffects\ImpactEffect.cs" />
+     <Compile Include="Assets\Scrips\Combat\ImpactEffects\ImpactEffectProcessor.cs" />
+     <Compile Include="Assets\Scrips\Combat\Selection\AreaSelection.cs" />
+     <Compile Include="Assets\Scrips\Combat\Selection\TargetSelection.cs" />
+     <Compile Include="Assets\Scrips\Combat\Selection\TargetSelectionOnCollision.cs" />
+     <Compile Include="Assets\Scrips\Combat\SplashDamageOnHit.cs" />
      <Compile Include="Assets\Scrips\Combat\Status.cs" />
      <Compile Include="Assets\Scrips\Input\IInput.cs" />
      <Compile Include="Assets\Scrips\Input\InputKeyboard.cs" />
@@ -62,6 +70,7 @@
      <Compile Include="Assets\Scrips\Item\Item.cs" />
      <Compile Include="Assets\Scrips\Item\MeleeWeapon.cs" />
      <Compile Include="Assets\Scrips\Item\Weapon.cs" />
+     <Compile Include="Assets\Scrips\Management\ImpactEffectProcessorManager.cs" />
      <Compile Include="Assets\Scrips\Management\ObjectPool.cs" />
      <Compile Include="Assets\Scrips\Movement\LinearMovement.cs" />
      <Compile Include="Assets\Scrips\Movement\Move.cs" />
@@ -71,7 +80,12 @@
      <Compile Include="Assets\Scrips\Skills\AoE.cs" />
      <Compile Include="Assets\Scrips\Skills\AttackAbility.cs" />
      <Compile Include="Assets\Scrips\Skills\Shot.cs" />
-     <Compile Include="Assets\Scrips\Skills\TalentSystem.cs" />
+     <Compile Include="Assets\Scrips\Skills\Talents\IncreaseRange.cs" />
+     <Compile Include="Assets\Scrips\Skills\Talents\ReducedDamage.cs" />
+     <Compile Include="Assets\Scrips\Skills\Talents\SplashEffect.cs" />
+     <Compile Include="Assets\Scrips\Skills\Talents\Talent.cs" />
+     <Compile Include="Assets\Scrips\Skills\Talents\TalentBook.cs" />
+     <Compile Include="Assets\Scrips\Skills\Tooltip.cs" />
      <Compile Include="Assets\Scrips\Skills\_moveTest.cs" />
      <Compile Include="Assets\Scrips\Spawning\Respawn.cs" />
      <Compile Include="Assets\Scrips\Spawning\Respawner.cs" />

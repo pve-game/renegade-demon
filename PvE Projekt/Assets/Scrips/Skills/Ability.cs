@@ -28,7 +28,7 @@ public abstract class Ability : MonoBehaviour
     /// </summary>
     [SerializeField]
     protected float maximumDistance = 0f;
-
+    public float MaximumDistance { get { return maximumDistance; } set { maximumDistance = Mathf.Max(value, 0); } }
     /// <summary>
     /// Cooldown of the ability
     /// </summary>
@@ -90,5 +90,7 @@ public abstract class Ability : MonoBehaviour
 
     protected abstract void LevelUpHandler(int level);
 
-    
+    public virtual void AddBehaviour(MonoBehaviour mb){}
+    public virtual void RemoveBehaviour(MonoBehaviour mb){}
+
 }
