@@ -5,6 +5,10 @@ using System.Collections.Generic;
 /// Modifies incoming damage and relays the value to the health component.
 /// Moreover, it can apply periodic damage.
 /// </summary>
+/// <remarks>
+/// Author: Martin Wettig
+/// </remarks>
+[RequireComponent(typeof(Health))]
 public class DamageEffectProcessor : ImpactEffectProcessor
 {
     private Health health = null;

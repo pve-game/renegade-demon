@@ -44,7 +44,7 @@ public abstract class Talent : MonoBehaviour
     /// <summary>
     /// Removes the effect
     /// </summary>
-    public abstract void UnLearn();
+    public abstract void Unlearn();
 
     /// <summary>
     /// Callback function for toggle ui elements
@@ -55,7 +55,7 @@ public abstract class Talent : MonoBehaviour
         if (isLearned)
             Learn();
         else
-            UnLearn();
+            Unlearn();
     }
 
     public void ShowTooltip()

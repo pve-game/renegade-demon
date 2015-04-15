@@ -34,7 +34,7 @@ public class IncreaseRange : Talent
         }
     }
 
-    public override void UnLearn()
+    public override void Unlearn()
     {
         Debug.Log("unlearned.");
 

@@ -23,13 +23,20 @@ public class SplashEffect : Talent
 
     private TargetSelection targetSelector = null;
 
+    /// <summary>
+    /// Determines whether or not the object in the center should be placed in the hit collection.
+    /// Default: false
+    /// </summary>
+    [SerializeField]
+    private bool includeOrigin = false;
+
     public override void Learn()
     {
         for (int i = 0; i < affectedAbility.Length; i++)
             affectedAbility[i].AddSelector(targetSelector);
     }
 
-    public override void UnLearn()
+    public override void Unlearn()
     {
         for (int i = 0; i < affectedAbility.Length; i++)
             affectedAbility[i].RemoveSelector(targetSelector);
@@ -38,8 +45,6 @@ public class SplashEffect : Talent
     protected override void Initialize()
     {
         base.Initialize();
-        targetSelector = new AreaSelection(radius);
-
-
+        targetSelector = new AreaSelection(radius, includeOrigin);
     }
 }

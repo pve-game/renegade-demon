@@ -1,11 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// Applies effects on specific targets when a collision occurs
+/// </summary>
+/// <remarks>
+/// Author: Martin Wettig
+/// </remarks>
 public class TargetSelectionOnCollision : MonoBehaviour
 {
-    private List<TargetSelection> selectors = new List<TargetSelection>();
+    /// <summary>
+    /// One or more methods that are used to select targets
+    /// </summary>
+    private List<TargetSelection> selectors = null;
+    /// <summary>
+    /// Sets the desired methods
+    /// </summary>
     public List<TargetSelection> Selectors { set { selectors = value; } }
-    private List<ImpactEffect> effects = new List<ImpactEffect>();
+    /// <summary>
+    /// One or more effects that should be applied during a collision
+    /// </summary>
+    private List<ImpactEffect> effects = null;
+    /// <summary>
+    /// Sets the desired effects
+    /// </summary>
     public List<ImpactEffect> Effects { set { effects = value; } }
 
     /// <summary>
@@ -37,36 +55,8 @@ public class TargetSelectionOnCollision : MonoBehaviour
                 targets[j].GetComponent<ImpactEffectProcessorManager>().SendEffects(effects);
             }
         }
-    }
-
-    public void AddSelectors(List<TargetSelection> selectors)
-    {
-        for(int i = 0; i < selectors.Count; i++)
-            AddSelector(selectors[i]);
-    }
-    public void AddSelector(TargetSelection selector)
-    {
-        selectors.Add(selector);
-    }
-
-    public void RemoveSelector(TargetSelection selector)
-    {
-        selectors.Remove(selector);
-    }
-
-    public void AddEffects(List<ImpactEffect> effects)
-    {
-        for (int i = 0; i < selectors.Count; i++)
-            AddEffect(effects[i]);
-    }
-
-    public void AddEffect(ImpactEffect effect)
-    {
-        effects.Add(effect);
-    }
-
-    public void RemoveEffect(ImpactEffect effect)
-    {
-        effects.Remove(effect);
+        //notify any registered class
+        if (onHitOccured != null)
+            onHitOccured();
     }
 }

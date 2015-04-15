@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine.Events;
 
 /// <summary>
 /// Container for talent selection
@@ -47,7 +46,7 @@ public class TalentBook : MonoBehaviour
     /// Collection of talent toggle buttons, i.e. the visual representation
     /// </summary>
     private List<Toggle> talentUIelements = null;
-    
+
     public void Awake()
     {
         talents = new List<Talent>();
@@ -80,7 +79,7 @@ public class TalentBook : MonoBehaviour
         Vector3 buttonPosition = new Vector3(-60f, 0f, 0f);
         buttonPosition.y = 120f //topmost position
         - talentUIelements.Count * (talentRectTransform.rect.height + 15f); // vertical offset including margin
-            
+
 
         talentRectTransform.localPosition = buttonPosition;
         Vector3 tooltipPosition = talentRectTransform.TransformVector(talentRectTransform.localPosition);
@@ -90,7 +89,7 @@ public class TalentBook : MonoBehaviour
         buttonPosition.x = -30f;
         //236,273 -> targetpos
         ttrt.position = uiCanvas.transform.TransformVector(new Vector3(236f, 273f, 0f));
-            //tooltipPosition;
+        //tooltipPosition;
         //connect OnEnter and OnLeave events 
         //with displaying or hiding the tooltip
         EventTrigger et = talentToggleButton.GetComponent<EventTrigger>();
@@ -100,19 +99,17 @@ public class TalentBook : MonoBehaviour
             if (e.eventID == EventTriggerType.PointerEnter)
             {
                 //pass event data by lambda expression
-                e.callback.AddListener((eventdata) => {  t.ShowTooltip(); });
+                e.callback.AddListener((eventdata) => { t.ShowTooltip(); });
             }
             else if (e.eventID == EventTriggerType.PointerExit)
             {
                 e.callback.AddListener((eventdata) => { t.HideTooltip(); });
             }
-            //else if (e.eventID == EventTriggerType.PointerClick)
-            //{
-            //    e.callback.AddListener(new UnityAction<BaseEventData>(foo));
-            //}
         }
 
         talentToggleButton.onValueChanged.AddListener(t.SetState);
+        talentToggleButton.GetComponent<TalentChoiceNotifyer>().onTalentChange += ProcessTalentChoice;
+
         return talentToggleButton;
     }
 
@@ -122,9 +119,17 @@ public class TalentBook : MonoBehaviour
     /// <summary>
     /// Consumes a talent point during learning
     /// </summary>
-    public void LearnTalent()
+    private void LearnTalent()
     {
         talentPoints = Mathf.Clamp(--talentPoints, 0, maximumTalentPoints);
+    }
+
+    /// <summary>
+    /// Releases talent points during unlearning a talent
+    /// </summary>
+    private void UnlearnTalent()
+    {
+        talentPoints = Mathf.Clamp(++talentPoints, 0, maximumTalentPoints);
     }
 
     /// <summary>
@@ -134,5 +139,50 @@ public class TalentBook : MonoBehaviour
     public bool CanLearn()
     {
         return talentPoints > 0;
+    }
+
+    /// <summary>
+    /// Callback function that is used to intercept talent selection and activation.
+    /// </summary>
+    /// <param name="toggle">firing UI object</param>
+    /// <param name="toggleState">whether the toggle is on or off</param>
+    private void ProcessTalentChoice(GameObject toggle, bool toggleState)
+    {
+        //get the toggle component as it should be searched
+        //in the ui elements list
+        Toggle t = toggle.GetComponent<Toggle>();
+        for (int i = 0; i < talentUIelements.Count; i++)
+        {
+            //if there is a match
+            if (t == talentUIelements[i])
+            {
+                //if talent was not learned already
+                //toggleState is true as it assumes that the talent can be learned
+                if (toggleState)
+                {
+                    //check if there are talent points left
+                    if (CanLearn())
+                    {
+                        //activate the corresponding talent
+                        talents[i].Learn();
+                        //consume a talent point
+                        LearnTalent();
+                        Debug.Log("talent-points: " + talentPoints);
+                    }
+                    else
+                        t.isOn = false;//keep the toggle inactive
+
+                }
+                else
+                {
+                    //otherwise inactivate the talent
+                    talents[i].Unlearn();
+                    //release the talent point
+                    UnlearnTalent();
+                }
+
+                break;
+            }
+        }
     }
 }

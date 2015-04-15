@@ -46,7 +46,7 @@ public class AoE : AttackAbility
 
     private void InitializeDamageLogic()
     {
-        targetSelector = new AreaSelection(radius);
+        targetSelector = new AreaSelection(radius, false);
         impactEffects.Add(new DamageEffect(damage));
     }
 

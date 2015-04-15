@@ -8,12 +8,21 @@ using System.Collections.Generic;
 /// </remarks>
 public class AreaSelection : TargetSelection
 {
+    /// <summary>
+    /// Radius of the checked area
+    /// </summary>
     private float radius = 1f;
+    /// <summary>
+    /// Determines whether or not the object in the center should be placed in the hit collection.
+    /// Default: false
+    /// </summary>
+    private bool includeOrigin = false;
   //  private int layer = 0;
 
-    public AreaSelection(float checkRadius)//, int checkLayer)
+    public AreaSelection(float checkRadius, bool keepOrigin)//, int checkLayer)
     {
         radius = checkRadius;
+        includeOrigin = keepOrigin;
        // layer = checkLayer;
     }
 
@@ -27,9 +36,19 @@ public class AreaSelection : TargetSelection
         List<GameObject> targets = new List<GameObject>();//base.DetermineTargets(impactObject, layer);
         //targets.RemoveAt(0); //remove initial object from area selection
         Collider[] hits = Physics.OverlapSphere(impactObject.transform.position, radius, 1 << layer);
+        //for all objects in the area
         for (int i = 0; i < hits.Length; i++)
         {
-            targets.Add(hits[i].gameObject);
+            //if center object should be counted towards the hits
+            if(includeOrigin)
+                targets.Add(hits[i].gameObject);
+            else
+            {
+                //check if a hit is the center object and exlude if so
+                GameObject hit = hits[i].gameObject;
+                if (hit != impactObject)
+                    targets.Add(hit);
+            }
         }
         return targets;
     }

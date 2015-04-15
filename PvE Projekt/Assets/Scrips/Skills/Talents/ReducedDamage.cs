@@ -7,10 +7,12 @@ using System.Collections;
 /// <remarks>
 /// Author:Martin Wettig
 /// </remarks>
+[RequireComponent(typeof(DamageEffectProcessor))]
 public class ReducedDamage : Talent
 {
-    [SerializeField]
-    private Health health = null;
+    //[SerializeField]
+    //private Health health = null;
+    private DamageEffectProcessor processor = null;
 
     /// <summary>
     /// Denotes the amount of damage reduction.
@@ -21,11 +23,19 @@ public class ReducedDamage : Talent
   
     public override void Learn()
     {
-        health.DamageModifier -= modifier;
+        //health.DamageModifier -= modifier;
+        processor.DamageDampingFactor += modifier;
     }
 
-    public override void UnLearn()
+    public override void Unlearn()
     {
-        health.DamageModifier += modifier;
+        //health.DamageModifier += modifier;
+        processor.DamageDampingFactor -= modifier;
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        processor = GetComponent<DamageEffectProcessor>();
     }
 }
