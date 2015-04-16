@@ -75,20 +75,32 @@ public class TalentBook : MonoBehaviour
 
         //button transform
         RectTransform talentRectTransform = talentToggleButton.GetComponent<RectTransform>();
-        //prepare a vector for the local position of the button
-        Vector3 buttonPosition = new Vector3(-60f, 0f, 0f);
-        buttonPosition.y = 120f //topmost position
+
+        RectTransform bookCanvasRectTransform = bookCanvas.GetComponent<RectTransform>();
+        //prepare a vector for the local position of the button with a x-offset
+        float xOffset = 200f;
+        float yOffset = 100f;
+        Vector3 buttonPosition = new Vector3(bookCanvasRectTransform.anchorMin.x + xOffset, bookCanvasRectTransform.anchorMax.y + yOffset, 0f);
+
+        buttonPosition.y = buttonPosition.y //topmost position
         - talentUIelements.Count * (talentRectTransform.rect.height + 15f); // vertical offset including margin
 
 
         talentRectTransform.localPosition = buttonPosition;
-        Vector3 tooltipPosition = talentRectTransform.TransformVector(talentRectTransform.localPosition);
+        //Vector3 tooltipPosition = talentRectTransform.position;
         //place the tooltip beside the talent
-        RectTransform ttrt = t.Tooltip.GetComponent<RectTransform>();
-        //ttrt.transform.SetParent(bookCanvas.transform, false);
-        buttonPosition.x = -30f;
+        RectTransform tooltipRectTransform = t.Tooltip.GetComponent<RectTransform>();
+        t.Tooltip.transform.SetParent(talentRectTransform.transform, false);
+        buttonPosition.y = 0f;        
+        buttonPosition.x = 374f;
+        tooltipRectTransform.localPosition = buttonPosition;
+        
         //236,273 -> targetpos
-        ttrt.position = uiCanvas.transform.TransformVector(new Vector3(236f, 273f, 0f));
+        //ttrt.position = uiCanvas.transform.TransformVector(new Vector3(236f, 273f, 0f));
+        
+        //position of pivot relative to anchors
+        //ttrt.anchoredPosition = Vector3.zero;
+
         //tooltipPosition;
         //connect OnEnter and OnLeave events 
         //with displaying or hiding the tooltip
@@ -112,9 +124,6 @@ public class TalentBook : MonoBehaviour
 
         return talentToggleButton;
     }
-
-    //todo: stat point check prior to learning
-    //todo: change to click event instead of value change to get the sending ui element
 
     /// <summary>
     /// Consumes a talent point during learning
@@ -143,6 +152,7 @@ public class TalentBook : MonoBehaviour
 
     /// <summary>
     /// Callback function that is used to intercept talent selection and activation.
+    /// If a talent toggle is chosen and no talent points are available the corresponding toggle state is set to off.
     /// </summary>
     /// <param name="toggle">firing UI object</param>
     /// <param name="toggleState">whether the toggle is on or off</param>
@@ -167,7 +177,6 @@ public class TalentBook : MonoBehaviour
                         talents[i].Learn();
                         //consume a talent point
                         LearnTalent();
-                        Debug.Log("talent-points: " + talentPoints);
                     }
                     else
                         t.isOn = false;//keep the toggle inactive

@@ -25,10 +25,18 @@ public abstract class Talent : MonoBehaviour
     public Sprite Icon { get { return icon; } }
 
 
+    /// <summary>
+    /// Tooltip prefab
+    /// </summary>
     [SerializeField]
     protected Canvas tooltip = null;
-    public Canvas Tooltip { get { return tooltip; } }
+
+    /// <summary>
+    /// The cloned tooltip instance
+    /// </summary>
     private Canvas tooltipInstance = null;
+    public Canvas Tooltip { get { return tooltipInstance; } }
+
 
     // Use this for initialization
     void Start()
@@ -72,17 +80,18 @@ public abstract class Talent : MonoBehaviour
 
     protected virtual void Initialize()
     {
-        GetComponent<TalentBook>().AddTalent(this);
         //if there is a tooltip canvas available
         //set the tooltip content
         if (tooltip != null)
         {
             tooltipInstance = Instantiate(tooltip) as Canvas;
+            
             Text title = tooltipInstance.transform.FindChild("Tooltip-Title").GetComponent<Text>();
             title.text = talentName;
             Text descr = tooltipInstance.transform.FindChild("Tooltip-Description").GetComponent<Text>();
             descr.text = description;
         }
+        GetComponent<TalentBook>().AddTalent(this);
     }
 
 }

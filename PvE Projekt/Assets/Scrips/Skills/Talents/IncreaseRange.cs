@@ -23,7 +23,6 @@ public class IncreaseRange : Talent
 
     public override void Learn()
     {
-        Debug.Log("learned.");
         for (int i = 0; i < affectedSkills.Length; i++)
         {
             Ability a = affectedSkills[i];
@@ -36,8 +35,6 @@ public class IncreaseRange : Talent
 
     public override void Unlearn()
     {
-        Debug.Log("unlearned.");
-
         for (int i = 0; i < affectedSkills.Length; i++)
         {
             Ability a = affectedSkills[i];
