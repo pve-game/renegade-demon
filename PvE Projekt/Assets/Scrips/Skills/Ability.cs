@@ -64,6 +64,11 @@ public abstract class Ability : MonoBehaviour
    
     [SerializeField]
     protected int experiencePerSuccessfulUsage = 1;
+    /// <summary>
+    /// Percentage of additional experience that is required for the next level
+    /// </summary>
+    [SerializeField]
+    protected float experienceIncreaseRate = 0f;
     public void Awake()
     {
         Initialize();
@@ -76,6 +81,7 @@ public abstract class Ability : MonoBehaviour
     }
     protected void GainExperience()
     {
+        Debug.Log("got exp!");
         if (skillExperience != null)
         {
             skillExperience.AddExperience(experiencePerSuccessfulUsage);
@@ -85,12 +91,12 @@ public abstract class Ability : MonoBehaviour
     protected virtual void Initialize()
     {
         if (canLevel)
+        {
             skillExperience = new Experience();
+            skillExperience.ExperienceIncrease = experienceIncreaseRate;
+        }
     }
 
     protected abstract void LevelUpHandler(int level);
-
-    public virtual void AddBehaviour(MonoBehaviour mb){}
-    public virtual void RemoveBehaviour(MonoBehaviour mb){}
 
 }

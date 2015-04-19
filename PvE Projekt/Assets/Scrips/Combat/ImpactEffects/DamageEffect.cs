@@ -26,4 +26,13 @@ public class DamageEffect : ImpactEffect
         numberOfTicks = tickCount;
     }
 
+    /// <summary>
+    /// Updates the damage value
+    /// </summary>
+    /// <param name="newDamage">value used for replacement</param>
+    public void ChangeDamageValue(int newDamage)
+    {
+        damage = newDamage;
+    }
+
 }

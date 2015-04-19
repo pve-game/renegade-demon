@@ -30,6 +30,7 @@ public class Experience
     /// </summary>
     [SerializeField]
     private float experienceIncrease = 0f;
+    public float ExperienceIncrease { get { return experienceIncrease; } set { experienceIncrease = Mathf.Max(value, 0f); } }
     
     /// <summary>
     /// Notifies other classes of the new level value
@@ -42,6 +43,7 @@ public class Experience
     {
         //add the gathered experience
         currentExperience += e;
+        Debug.Log("current xp/exp-to-level: " + currentExperience+"/"+experienceForLevelUp);
         //total experience gathered exceeds the amount required for level up
         if (currentExperience >= experienceForLevelUp)
         {
@@ -49,9 +51,12 @@ public class Experience
             //remove the consumed experience and keep the rest for the next level
             currentExperience = currentExperience - experienceForLevelUp;
             //update the amount of required experience
-            experienceForLevelUp = experienceForLevelUp + (int)(experienceForLevelUp * experienceIncrease);
+            experienceForLevelUp = (int)(experienceForLevelUp * (1 + experienceIncrease));
             if (onLevelChanged != null)
+            {
+                Debug.Log("LevelchangeCall");
                 onLevelChanged(currentLevel);
+            }
         }
     }
 

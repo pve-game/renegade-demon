@@ -33,7 +33,9 @@ public class Health : MonoBehaviour
     /// <param name="value">number by which health is changed</param>
     public void addHealth(int value)
     {
+        //Debug.Log("Health: pre-clamp: " + value);
         currentHealth = Mathf.Clamp(currentHealth + value, 0, maximumHealth);
+        //Debug.Log("Health: clamped: " + currentHealth);
         if (onHealthChanged != null)
             onHealthChanged(currentHealth / (float)maximumHealth);
     }

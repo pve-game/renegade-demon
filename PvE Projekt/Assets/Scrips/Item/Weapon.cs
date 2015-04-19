@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// Base class for weapons that contains a leveling feature
@@ -9,6 +9,28 @@ using System.Collections;
 /// </remarks>
 public abstract class Weapon : MonoBehaviour 
 {
+
+    /// <summary>
+    /// Provide a mean to notify damage effects of updated damage values.
+    /// This delegate can only relay information within weapons
+    /// </summary>
+    /// <param name="newDamage">new damage value</param>
+    protected delegate void UpdateDamage(int newDamage);
+    protected UpdateDamage onDamageChange;
+
+    /// <summary>
+    /// Determine which layer should be checked for collisions
+    /// </summary>
+    protected int collisionLayer = 0;
+    [SerializeField]
+    protected string collisionLayerName = "Default";
+
+    /// <summary>
+    /// Effects that should be applied to targets
+    /// </summary>
+    protected List<ImpactEffect> impactEffects = new List<ImpactEffect>();
+    protected List<TargetSelection> targetSelectors = new List<TargetSelection>();
+
     /// <summary>
     /// Experience for a successful hit
     /// </summary>
@@ -25,7 +47,7 @@ public abstract class Weapon : MonoBehaviour
     /// <summary>
     /// Weapon experience
     /// </summary>
-    protected Experience exp = null;
+    protected Experience experience = null;
 
     public void Awake()
     {
@@ -34,19 +56,25 @@ public abstract class Weapon : MonoBehaviour
 	
     protected virtual void Initialize()
     {
-        exp = new Experience();
-        exp.onLevelChanged += LevelUpHandler;
+        experience = new Experience();
+        experience.onLevelChanged += LevelUpHandler;
+
+        DamageEffect de = new DamageEffect(damage);
+        onDamageChange += de.ChangeDamageValue; //connect damage updating with damage effect
+        impactEffects.Add(de);
     }
 
     protected void LevelUpHandler(int level)
     {
         damage = damage + damage * level / 10;
+        if (onDamageChange != null)
+            onDamageChange(damage);
     }
 
     protected void GainExperience()
     {
-        exp.AddExperience(experienceForSuccessfulUsage);
+        experience.AddExperience(experienceForSuccessfulUsage);
     }
 
-
+    public abstract void Use();
 }

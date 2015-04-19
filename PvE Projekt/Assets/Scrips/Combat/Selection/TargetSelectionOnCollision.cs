@@ -58,5 +58,8 @@ public class TargetSelectionOnCollision : MonoBehaviour
         //notify any registered class
         if (onHitOccured != null)
             onHitOccured();
+
+        Debug.Log("Hit");
+;
     }
 }

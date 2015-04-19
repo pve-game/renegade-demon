@@ -40,12 +40,9 @@ public class DamageEffectProcessor : ImpactEffectProcessor
                     damageValue = (int) (damageValue * (1 + damageEnhancingFactor));
                     //then take damping into account
                     damageValue = (int) (damageValue * (1 - damageDampingFactor));
+                    //Debug.Log("Damage-Processor:damage: " + damage.Damage);
+                    //Debug.Log("Damage-Processor:damageValue: " + damageValue);
                     health.addHealth(-damageValue);
-                }
-                else
-                {
-                    //periodic damage
-                    //TODO: damage over time
                 }
             }
         }

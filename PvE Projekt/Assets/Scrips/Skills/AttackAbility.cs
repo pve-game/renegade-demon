@@ -4,6 +4,14 @@ using System.Collections.Generic;
 public class AttackAbility : Ability
 {
     /// <summary>
+    /// Provide a mean to notify damage effects of updated damage values.
+    /// This delegate can only relay information within abilities
+    /// </summary>
+    /// <param name="newDamage">new damage value</param>
+    protected delegate void UpdateDamage(int newDamage);
+    protected UpdateDamage onDamageChange;
+
+    /// <summary>
     /// Damage that the shot does
     /// </summary>
     [SerializeField]
@@ -42,6 +50,7 @@ public class AttackAbility : Ability
     protected override void LevelUpHandler(int level)
     {
         damage = damage + damage * level / 10;
+        //Debug.Log("Level: " + level + " - Damage: " + damage);
     }
 
     public void AddSelector(TargetSelection selector)

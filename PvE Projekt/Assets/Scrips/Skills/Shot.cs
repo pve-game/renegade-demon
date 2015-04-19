@@ -4,53 +4,46 @@ using System.Collections.Generic;
 /// <summary>
 /// Simple shot ability
 /// </summary>
+/// <remarks>
+/// Author: Martin Wettig
+/// </remarks>
 public class Shot : AttackAbility
 {
     /// <summary>
-    /// holds the bullet instance
+    /// Bullet pool size
     /// </summary>
-    private GameObject bullet = null;
-
     [SerializeField]
     private int vfxNumber = 10;
 
-    ///// <summary>
-    ///// Bullet pool
-    ///// </summary>
-    //[SerializeField]
-    //private ObjectPool pool = null;
-
-    private GameObject[] pool = null;
-
+    /// <summary>
+    /// Bullet pool
+    /// </summary>
+    private ObjectPool pool = null;
 
     public override void Use()
     {
-        //bullet = pool.GetObject();
-        //bullet.transform.position = Vector3.zero; //only for debugging!
-        bullet = GetObject();
-        if (bullet == null) return;
-        bullet.SetActive(true);
-        //bullet.GetComponent<DamageOnHit>().Damage = damage;
-        
-        LinearMovement lm = bullet.GetComponent<LinearMovement>();
-        lm.StartMovement(spawnPoint.position, spawnPoint.position + spawnPoint.forward * maximumDistance);
+        if (Ready)
+        {
+            GameObject bullet = pool.GetObject();
+            if (bullet == null) return;
+            bullet.SetActive(true);
+            LinearMovement lm = bullet.GetComponent<LinearMovement>();
+            lm.StartMovement(spawnPoint.position, spawnPoint.position + spawnPoint.forward * maximumDistance);
 
-        //--old
-        //bullet.GetComponent<LinearMovement>().Active = true;
-        //bullet.GetComponent<LinearMovement>().Speed = 5f;
-        //bullet.transform.position = transform.position;
-        //bullet.GetComponent<LinearMovement>().Direction = transform.forward;
-        base.Use();
+            base.Use();
+        }
     }
 
     protected override void Initialize()
     {
         //prepare appropriate collision layer first
         base.Initialize();
-        //pool.Initialize(vfxNumber);
-        
         //set up the collision properties
-        impactEffects.Add(new DamageEffect(damage));
+        //in particular, connect the damage effect with the damage update notifyer
+        DamageEffect damageEffect = new DamageEffect(damage);
+        onDamageChange += damageEffect.ChangeDamageValue;
+        impactEffects.Add(damageEffect);
+
         targetSelectors.Add(new TargetSelection());
         InitializePool();
 
@@ -58,12 +51,12 @@ public class Shot : AttackAbility
 
     private void InitializePool()
     {
-        pool = new GameObject[vfxNumber];
+        pool = new ObjectPool(vfxNumber);
         for (int i = 0; i < vfxNumber; i++)
         {
             //shot gets a shot prefab that needs to be instantiated
-            GameObject bullet = Instantiate(vfx, transform.position, transform.rotation) as GameObject;
-
+            GameObject bullet = Instantiate(vfx);
+            bullet.SetActive(false);
             //rigidbody is needed to perform collision detection
             //as we might re-use the bullet prefab for other purposes
             //the rigidbody is added dynamically
@@ -71,75 +64,48 @@ public class Shot : AttackAbility
             //disable gravity as the shot should fly straight forward
             rb.useGravity = false;
 
-            //on the prefab there should be a collider prepared
-            //to fit the size of the model
-            Collider c = bullet.GetComponent<Collider>();
-            if (c != null)
-            {
-                c.enabled = true;
-            }
-
-            //straight forward movement
-            bullet.AddComponent<LinearMovement>();
-
             //prepare collision handler
             TargetSelectionOnCollision collisionSelection = bullet.AddComponent<TargetSelectionOnCollision>();
             //add the set up target selection methods and impact effects
-            //collisionSelection.AddSelectors(targetSelectors);
-            //collisionSelection.AddEffects(impactEffects);
+            //references to the lists are passed as content changes are
+            //propagated immediately
             collisionSelection.Selectors = targetSelectors;
             collisionSelection.Effects = impactEffects;
 
             collisionSelection.CollisionLayer = collisionLayer;
+
+            //straight forward movement
+            LinearMovement movement = bullet.AddComponent<LinearMovement>();
             //stop movement on hit
-            collisionSelection.onHitOccured += bullet.GetComponent<LinearMovement>().StopMovement;
-
-            ////apply damage on hit
-            //DamageOnHit doh = bullet.AddComponent<DamageOnHit>();
-
-            ////check only specified layer
-            //doh.CollisionLayer = collisionLayer;
-            //doh.Damage = damage;
-            ////stop movement on hit
-            //doh.onHitOccured += bullet.GetComponent<LinearMovement>().StopMovement;
+            collisionSelection.onHitOccured += movement.StopMovement;
 
             //if skill can level
             if (skillExperience != null)
             {
                 //get experience on successful hit
-                //doh.onHitOccured += GainExperience;
                 collisionSelection.onHitOccured += GainExperience;
                 skillExperience.onLevelChanged += LevelUpHandler;
+                skillExperience.onLevelChanged += foo;
             }
-
-            //GameObject go = (GameObject)Instantiate(vfx, transform.position, transform.rotation);
-            //go.AddComponent<LinearMovement>();
-            bullet.SetActive(false);
-            //pool.AddObject(bullet);
-            pool[i] = bullet;
+            pool.AddObject(bullet);
         }
     }
 
+    /// <summary>
+    /// Executes parent level up behaviour and notfies
+    /// internally registered components of damage changes
+    /// </summary>
+    /// <param name="level"></param>
     protected override void LevelUpHandler(int level)
     {
+        Debug.Log("Ding!");
         base.LevelUpHandler(level);
-        //bullet.GetComponent<DamageOnHit>().Damage = damage;
+        if (onDamageChange != null)
+            onDamageChange(damage);
     }
 
-    private GameObject GetObject()
+    private void foo(int level)
     {
-        GameObject go = null;
-        for (int i = 0; i < pool.Length; i++)
-        {
-            GameObject g = pool[i];
-            if (!g.activeInHierarchy)
-            {
-                go = g;
-                break;
-            }
-        }
-        return go;
+        Debug.Log("foo-Ding!");
     }
-
-    
 }
