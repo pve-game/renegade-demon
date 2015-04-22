@@ -81,7 +81,6 @@ public abstract class Ability : MonoBehaviour
     }
     protected void GainExperience()
     {
-        Debug.Log("got exp!");
         if (skillExperience != null)
         {
             skillExperience.AddExperience(experiencePerSuccessfulUsage);

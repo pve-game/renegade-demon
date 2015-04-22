@@ -84,11 +84,10 @@ public class Shot : AttackAbility
             {
                 //get experience on successful hit
                 collisionSelection.onHitOccured += GainExperience;
-                skillExperience.onLevelChanged += LevelUpHandler;
-                skillExperience.onLevelChanged += foo;
             }
             pool.AddObject(bullet);
         }
+        skillExperience.onLevelChanged += LevelUpHandler;
     }
 
     /// <summary>
@@ -98,14 +97,8 @@ public class Shot : AttackAbility
     /// <param name="level"></param>
     protected override void LevelUpHandler(int level)
     {
-        Debug.Log("Ding!");
         base.LevelUpHandler(level);
         if (onDamageChange != null)
             onDamageChange(damage);
-    }
-
-    private void foo(int level)
-    {
-        Debug.Log("foo-Ding!");
     }
 }

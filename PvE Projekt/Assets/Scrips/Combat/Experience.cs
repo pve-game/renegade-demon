@@ -43,7 +43,7 @@ public class Experience
     {
         //add the gathered experience
         currentExperience += e;
-        Debug.Log("current xp/exp-to-level: " + currentExperience+"/"+experienceForLevelUp);
+
         //total experience gathered exceeds the amount required for level up
         if (currentExperience >= experienceForLevelUp)
         {
@@ -54,7 +54,6 @@ public class Experience
             experienceForLevelUp = (int)(experienceForLevelUp * (1 + experienceIncrease));
             if (onLevelChanged != null)
             {
-                Debug.Log("LevelchangeCall");
                 onLevelChanged(currentLevel);
             }
         }
