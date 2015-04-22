@@ -46,7 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scrips\Ai\ColliderDetection.cs" />
+     <Compile Include="Assets\Scrips\Ai\AudioDetection.cs" />
+     <Compile Include="Assets\Scrips\Ai\CloseCombatEnemy\CCE_Attack.cs" />
+     <Compile Include="Assets\Scrips\Ai\CloseCombatEnemy\CCE_ChasePlayer.cs" />
+     <Compile Include="Assets\Scrips\Ai\CloseCombatEnemy\CCE_Patrol.cs" />
+     <Compile Include="Assets\Scrips\Ai\CloseCombatEnemy\CCE_Search.cs" />
+     <Compile Include="Assets\Scrips\Ai\FiniteStateMaschineFramework.cs" />
+     <Compile Include="Assets\Scrips\Ai\NPCControl.cs" />
+     <Compile Include="Assets\Scrips\Ai\VisualDetection.cs" />
      <Compile Include="Assets\Scrips\Camera\ThirdPersonCamera.cs" />
      <Compile Include="Assets\Scrips\Combat\Collect.cs" />
      <Compile Include="Assets\Scrips\Combat\DamageOnHit.cs" />
