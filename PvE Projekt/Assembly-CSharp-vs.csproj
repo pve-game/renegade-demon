@@ -48,7 +48,6 @@
   <ItemGroup>
      <Compile Include="Assets\Scrips\Ai\ColliderDetection.cs" />
      <Compile Include="Assets\Scrips\Camera\ThirdPersonCamera.cs" />
-     <Compile Include="Assets\Scrips\Combat\Breakpoint.cs" />
      <Compile Include="Assets\Scrips\Combat\Collect.cs" />
      <Compile Include="Assets\Scrips\Combat\DamageOnHit.cs" />
      <Compile Include="Assets\Scrips\Combat\DestroyOnDeath.cs" />
@@ -72,7 +71,6 @@
      <Compile Include="Assets\Scrips\Item\MeleeWeapon.cs" />
      <Compile Include="Assets\Scrips\Item\Weapon.cs" />
      <Compile Include="Assets\Scrips\Management\ImpactEffectProcessorManager.cs" />
-     <Compile Include="Assets\Scrips\Management\ObjectBuilder.cs" />
      <Compile Include="Assets\Scrips\Management\ObjectPool.cs" />
      <Compile Include="Assets\Scrips\Movement\LinearMovement.cs" />
      <Compile Include="Assets\Scrips\Movement\Move.cs" />
@@ -89,14 +87,12 @@
      <Compile Include="Assets\Scrips\Skills\Talents\TalentBook.cs" />
      <Compile Include="Assets\Scrips\Skills\Talents\TalentChoiceNotifyer.cs" />
      <Compile Include="Assets\Scrips\Skills\Tooltip.cs" />
-     <Compile Include="Assets\Scrips\Skills\_moveTest.cs" />
      <Compile Include="Assets\Scrips\Spawning\Respawn.cs" />
      <Compile Include="Assets\Scrips\Spawning\Respawner.cs" />
      <Compile Include="Assets\Scrips\UI\UiManager.cs" />
      <None Include="Assets\Scrips\Input\dvfjk.txt" />
      <None Include="Assets\Scrips\Ai\_bhiasd.txt" />
      <None Include="Assets\Prefabs\Test_Prefabs\cdjkikfg.txt" />
-     <None Include="Assets\RenegadeDemon-Classes.cd" />
      <None Include="Assets\Art_Staff\_test.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
