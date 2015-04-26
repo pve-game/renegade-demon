@@ -4,6 +4,20 @@ using UnityEngine;
 using System.Text;
 
 
+
+
+/// <summary>
+/// All types of NPC are stored here.
+/// </summary>
+/// 
+
+enum NPCTypes
+{
+    CloseCombat,
+    Archer,
+    Boss,
+}
+
 public class NPCControl : MonoBehaviour {
 
     GameObject player;
@@ -15,11 +29,28 @@ public class NPCControl : MonoBehaviour {
     private float _distance;
     public float Distance { get { return _distance; } }
 
+    [SerializeField]
+    private NPCTypes types;
+
     public void SetTransition(Transition t) { fsm.PerformTransition(t); }
 
     void Start()
     {
-        MakeFSM();
+        switch (types)
+        {
+            case NPCTypes.CloseCombat:
+                MakeFSM_CCE();
+                break;
+            case NPCTypes.Archer:
+                MakeFSM_Archer();
+                break;
+            case NPCTypes.Boss:
+                MakeFSM_Boss();
+                break;
+            default:
+                break;
+        }
+       
     }    
 
     void Update()
@@ -34,7 +65,10 @@ public class NPCControl : MonoBehaviour {
         fsm.CurrentState.Act(player, gameObject);
 	}
 
-    private void MakeFSM()
+    /// <summary>
+    /// Builds the finite state maschine for the close combat enemy.
+    /// </summary>
+    private void MakeFSM_CCE()
     {
         CCE_Patrol followPath = GetComponent<CCE_Patrol>();
         followPath.AddTransition(Transition.HeardSomething, StateID.Searching);
@@ -61,7 +95,21 @@ public class NPCControl : MonoBehaviour {
         fsm.AddState(chase);
         fsm.AddState(attack);
        
-        
-        
+    }
+
+    /// <summary>
+    /// Builds the finite state maschine for the archer enemy
+    /// </summary>
+    private void MakeFSM_Archer()
+    {
+
+    }
+
+    /// <summary>
+    /// Builds the finite state maschine for the boss enemy.
+    /// </summary>
+    private void MakeFSM_Boss()
+    {
+        Debug.LogError("This FSM is not implemented yet");
     }
 }
