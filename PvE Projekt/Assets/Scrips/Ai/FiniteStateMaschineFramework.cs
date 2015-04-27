@@ -11,6 +11,8 @@ public enum Transition
     HeardSomething,
     Attack,
     A_LostPlayer,
+    A_HeardSomething,
+    A_SawPlayer,
 }
 
 public enum StateID
@@ -21,6 +23,8 @@ public enum StateID
     Searching,
     AttackPlayer,
     A_Idle,
+    A_Attentive,
+    A_Attack,
 }
 
 public abstract class FSMState : MonoBehaviour

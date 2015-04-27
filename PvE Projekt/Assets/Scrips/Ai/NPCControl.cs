@@ -94,7 +94,6 @@ public class NPCControl : MonoBehaviour {
         fsm.AddState(search);
         fsm.AddState(chase);
         fsm.AddState(attack);
-       
     }
 
     /// <summary>
@@ -102,7 +101,23 @@ public class NPCControl : MonoBehaviour {
     /// </summary>
     private void MakeFSM_Archer()
     {
+        A_Idle idle = GetComponent<A_Idle>();
+        idle.AddTransition(Transition.A_HeardSomething, StateID.A_Attentive);
+        idle.AddTransition(Transition.A_SawPlayer, StateID.A_Attack);
 
+        A_Attentive attentive = GetComponent<A_Attentive>();
+        attentive.AddTransition(Transition.A_LostPlayer, StateID.A_Idle);
+        attentive.AddTransition(Transition.A_SawPlayer, StateID.A_Attack);
+
+        A_Attack distanceAttack = GetComponent<A_Attack>();
+        distanceAttack.AddTransition(Transition.A_LostPlayer, StateID.A_Idle);
+        distanceAttack.AddTransition(Transition.A_HeardSomething, StateID.A_Attentive);
+
+
+        fsm = new FSMSystem();
+        fsm.AddState(idle);
+        fsm.AddState(attentive);
+        fsm.AddState(distanceAttack);
     }
 
     /// <summary>
