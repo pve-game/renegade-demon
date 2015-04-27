@@ -37,9 +37,11 @@ public class A_Idle : FSMState {
     private Transform guardingPoint;
 
     /// <summary>
-    /// Shows if the archer is at his position or not.
+    /// Shows if the archer is near his position ans slows donw or not.
     /// </summary>
-    private bool atGuardingPosition;
+    private bool slowingDown;
+
+    float DistcanceToGuardingPosition;
 
     /// <summary>
     /// Necessary to use the Navigation Mesh for the NPC movement.
@@ -63,15 +65,21 @@ public class A_Idle : FSMState {
 
     public override void Reason(GameObject player, GameObject npc)
     {
-        throw new System.NotImplementedException();
+        if (detectionHear.detected)
+        {
+            agent.Stop();
+            npc.GetComponent<NPCControl>().SetTransition(Transition.A_HeardSomething);
+        }
+
+        if (detectionSee.detected)
+        {
+            npc.GetComponent<NPCControl>().SetTransition(Transition.A_SawPlayer);
+        }
     }
 
     public override void Act(GameObject player, GameObject npc)
     {
-        /// <summary>
-        /// Calculate the distance between the archer and his guarding position
-        /// </summary>
-        float DistcanceToGuardingPosition = (guardingPoint.position - transform.position).sqrMagnitude;
+        DistcanceToGuardingPosition = (guardingPoint.position - transform.position).sqrMagnitude;
 
         if (DistcanceToGuardingPosition > 3.0f)
         {
@@ -90,9 +98,18 @@ public class A_Idle : FSMState {
     {
         agent.SetDestination(guardingPoint.position);
 
-        if (distance < 5.0f)
+       /* if (distance < 5.0f || distance > 3.0f)
+        {
+            slowingDown = true;
+        }
+        else
+        {
+            slowingDown = false;
+        }
+
+        if (slowingDown)
         {
             agent.speed = Mathf.Lerp(agent.speed, 0.1f, 2.0f);
-        }
+        }*/
     }
 }
