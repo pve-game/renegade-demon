@@ -71,8 +71,49 @@ public class A_Attack : FSMState {
 
     public override void Act(GameObject player, GameObject npc)
     {
-        Debug.Log("Attack from Distance!");
+        if (objects.DistanceToPlayer >= 32.5f)
+        {
+            randomStepDecision();
+        }
     }
+
+    /// <summary>
+    /// The Archer will shot an arrow to the enemy
+    /// </summary>
+    private void shoot()
+    {
+        Debug.Log("Shoot  //  Attack from Distance!");
+    }
+   
+    /// <summary>
+    /// Get an random value wich decides in wich direction the archer will make his next step
+    /// an execute the order given.
+    /// </summary>
+    private void randomStepDecision()
+    {
+        Vector3 newPosition;
+
+        Vector3 left = new Vector3(0.0f, 0.0f, -40.0f);
+        Vector3 right = new Vector3(0.0f, 0.0f, 40.0f);
+
+        if (Random.value <= 0.5f)
+        {
+            newPosition = transform.position + left;
+        }
+        else
+        {
+           newPosition = transform.position + right;
+        }
+
+        agent.SetDestination(newPosition);
+        if (transform.position == newPosition)
+        {
+            /// Hier an dieser stelle eigene rotation berechnen
+            transform.LookAt(objects.PlayerPosition.position);
+            shoot();
+        }
+    }
+
 
     
 }

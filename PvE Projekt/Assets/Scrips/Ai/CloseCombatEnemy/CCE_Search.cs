@@ -51,7 +51,7 @@ public class CCE_Search : FSMState {
             npc.GetComponent<NPCControl>().SetTransition(Transition.LostPlayer);
         }
 
-        if (detectionSee.detected && objects.Distance > 25)
+        if (detectionSee.detected && objects.DistanceToPlayer > 25)
         {
             npc.GetComponent<NPCControl>().SetTransition(Transition.SawPlayer);
         }

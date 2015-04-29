@@ -45,7 +45,7 @@ public class CCE_ChasePlayer : FSMState {
             npc.GetComponent<NPCControl>().SetTransition(Transition.LostPlayer);
         }
 
-        if(objects.Distance <= AttackDistance)
+        if(objects.DistanceToPlayer <= AttackDistance)
         {
             Debug.Log("Transition to Attack State");
             npc.GetComponent<NPCControl>().SetTransition(Transition.Attack);

@@ -27,7 +27,7 @@ public class NPCControl : MonoBehaviour {
     public Transform PlayerPosition { get { return _player; } }
 
     private float _distance;
-    public float Distance { get { return _distance; } }
+    public float DistanceToPlayer { get { return _distance; } }
 
     [SerializeField]
     private NPCTypes types;

@@ -30,7 +30,7 @@ public class CCE_Attack : FSMState {
 
     public override void Reason(GameObject player, GameObject npc)
     {
-       if (objects.Distance > TransitionDistance)
+       if (objects.DistanceToPlayer > TransitionDistance)
        {
            npc.GetComponent<NPCControl>().SetTransition(Transition.SawPlayer);
        }
