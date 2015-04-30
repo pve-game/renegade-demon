@@ -14,8 +14,9 @@ using System.Collections;
 [RequireComponent(typeof(VisualDetection))]
 [RequireComponent(typeof(AudioDetection))]
 
-public class A_Attack : FSMState {
-    
+public class A_Attack : FSMState
+{
+
     /// <summary>
     /// Implemets the audio detection to this state.
     /// </summary>
@@ -36,8 +37,24 @@ public class A_Attack : FSMState {
     /// </summary>
     NavMeshAgent agent;
 
-	// Use this for initialization
-	void Awake () 
+    private bool isMoving = false;
+    private Vector3 newPosition;
+
+    [SerializeField]
+    private float attackDistance;
+
+    [SerializeField]
+    private float prancingDistance;
+
+    [SerializeField]
+    private float timeToWalk = 2.0f;
+
+    private float time = 0.0f;
+
+    private Vector3 oldPosition;
+
+    // Use this for initialization
+    void Awake()
     {
         stateID = StateID.A_Attack;
 
@@ -48,16 +65,20 @@ public class A_Attack : FSMState {
         objects = GetComponent<NPCControl>();
 
         agent = GetComponent<NavMeshAgent>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+        
+        agent.speed = 4.0f;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public override void Reason(GameObject player, GameObject npc)
     {
-        if(!detectionSee.detected && detectionHear.detected)
+        if (!detectionSee.detected && detectionHear.detected)
         {
             agent.Stop();
             npc.GetComponent<NPCControl>().SetTransition(Transition.A_HeardSomething);
@@ -71,10 +92,36 @@ public class A_Attack : FSMState {
 
     public override void Act(GameObject player, GameObject npc)
     {
-        if (objects.DistanceToPlayer >= 32.5f)
+        if (objects.DistanceToPlayer >= attackDistance)
         {
-            randomStepDecision();
+           // Debug.Log("attackZone");
+            shoot();
         }
+        else if (objects.DistanceToPlayer <= attackDistance && objects.DistanceToPlayer >= prancingDistance)
+        {
+           // Debug.Log("prancingZone");
+            if (!isMoving)
+            {
+                setNewWalkDirection(randomStepDecision());
+                isMoving = true;
+            }
+            GetComponent<Rigidbody>().MovePosition(Vector3.Lerp(oldPosition, newPosition, time / timeToWalk));
+            time += Time.deltaTime;
+
+            //if(time > 1)
+            //{
+            //    isMoving = false;
+            //    time = 0.0f;
+            //}
+            transform.LookAt(objects.PlayerPosition);
+            
+           // shoot();
+        }
+        else if (objects.DistanceToPlayer <= prancingDistance)
+        {
+            // Gummibaum
+        }
+
     }
 
     /// <summary>
@@ -84,36 +131,66 @@ public class A_Attack : FSMState {
     {
         Debug.Log("Shoot  //  Attack from Distance!");
     }
-   
+
     /// <summary>
-    /// Get an random value wich decides in wich direction the archer will make his next step
-    /// an execute the order given.
+    /// Produce a random value, which decides in wich direction the archer should walk.
+    /// The Decision is given as an integer. 1 means left and 2 means right. Value 0 means that the Archer
+    /// sould stand still.
     /// </summary>
-    private void randomStepDecision()
+    /// <returns>
+    /// new Direction as an integer value.
+    /// </returns>
+    private int randomStepDecision()
     {
-        Vector3 newPosition;
+        int newDirection;
 
-        Vector3 left = new Vector3(0.0f, 0.0f, -40.0f);
-        Vector3 right = new Vector3(0.0f, 0.0f, 40.0f);
+        float value = Random.value;
 
-        if (Random.value <= 0.5f)
+        if (value < 0.5f)
         {
-            newPosition = transform.position + left;
+            newDirection = 1;
+        }
+        else if (value > 0.5f)
+        {
+            newDirection = 2;
         }
         else
         {
-           newPosition = transform.position + right;
+            newDirection = 0;
         }
-
-        agent.SetDestination(newPosition);
-        if (transform.position == newPosition)
-        {
-            /// Hier an dieser stelle eigene rotation berechnen
-            transform.LookAt(objects.PlayerPosition.position);
-            shoot();
-        }
+        return newDirection;
     }
 
+    private void setNewWalkDirection(int newDirection)
+    {
+        Vector3 walkLeft = new Vector3(-4.0f, 0.0f, 0.0f);
+        Vector3 walkRight = new Vector3(4.0f, 0.0f, 0.0f);
 
-    
+        oldPosition = transform.position;
+
+        switch (newDirection)
+        {
+            case 1:
+                newPosition = transform.position - transform.right * 4;
+                break;
+            case 2:
+                newPosition = transform.position + transform.right * 4;
+                break;
+            default:
+                newPosition = transform.position;
+                break;
+        }
+            //agent.SetDestination(newPosition);
+            Debug.Log("new Position: " + newPosition);
+            
+    }
+
+    private void checkIfArcherIsAtDestination()
+    {
+        float DistanceToDestination;
+
+        DistanceToDestination = (newPosition - transform.position).sqrMagnitude;
+
+        Debug.Log("Distance to destination: " + DistanceToDestination);
+    }
 }

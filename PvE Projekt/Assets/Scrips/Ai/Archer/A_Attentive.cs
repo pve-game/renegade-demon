@@ -69,7 +69,7 @@ public class A_Attentive : FSMState {
 
     public override void Act(GameObject player, GameObject npc)
     {
-        transform.LookAt(objects.PlayerPosition.position);
+       transform.LookAt(objects.PlayerPosition.position);
 
         // Later here should be the caluclation for a slow rotation of the NPC,
         // so that he looks directly to the position where he heard th noise.

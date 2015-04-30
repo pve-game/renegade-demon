@@ -87,7 +87,7 @@ public class A_Idle : FSMState {
         }
         else
         {
-            Debug.Log("Play idle animation here");
+           // Debug.Log("Play idle animation here");
         }
     }
 

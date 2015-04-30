@@ -60,7 +60,7 @@ public class NPCControl : MonoBehaviour {
 
 	void LateUpdate () 
     {
-		Debug.Log(fsm.CurrentState);
+		//Debug.Log(fsm.CurrentState);
         fsm.CurrentState.Reason(player, gameObject);
         fsm.CurrentState.Act(player, gameObject);
 	}
