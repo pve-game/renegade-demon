@@ -108,14 +108,14 @@ public class A_Attack : FSMState
             GetComponent<Rigidbody>().MovePosition(Vector3.Lerp(oldPosition, newPosition, time / timeToWalk));
             time += Time.deltaTime;
 
-            //if(time > 1)
-            //{
-            //    isMoving = false;
-            //    time = 0.0f;
-            //}
+           if(time > 2)
+           {
+               isMoving = false;
+               time = 0.0f;
+           }
             transform.LookAt(objects.PlayerPosition);
             
-           // shoot();
+            shoot();
         }
         else if (objects.DistanceToPlayer <= prancingDistance)
         {

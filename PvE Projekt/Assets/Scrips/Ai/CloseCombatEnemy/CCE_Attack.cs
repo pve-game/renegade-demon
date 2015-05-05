@@ -52,7 +52,7 @@ public class CCE_Attack : FSMState
     {
 
         // If the Player is too far away from the Player, he will change to the chasing state.
-        if (objects.Distance > TransitionDistance)
+        if (objects.DistanceToPlayer > TransitionDistance)
 
             if (objects.DistanceToPlayer > TransitionDistance)
             {
