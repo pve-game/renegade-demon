@@ -92,12 +92,12 @@ public class A_Attack : FSMState
 
     public override void Act(GameObject player, GameObject npc)
     {
-        if (objects.DistanceToPlayer >= attackDistance)
+        if (objects.SqrDistanceToPlayer >= attackDistance)
         {
            // Debug.Log("attackZone");
             shoot();
         }
-        else if (objects.DistanceToPlayer <= attackDistance && objects.DistanceToPlayer >= prancingDistance)
+        else if (objects.SqrDistanceToPlayer <= attackDistance && objects.SqrDistanceToPlayer >= prancingDistance)
         {
            // Debug.Log("prancingZone");
             if (!isMoving)
@@ -117,7 +117,7 @@ public class A_Attack : FSMState
             
             shoot();
         }
-        else if (objects.DistanceToPlayer <= prancingDistance)
+        else if (objects.SqrDistanceToPlayer <= prancingDistance)
         {
             // Gummibaum
         }

@@ -52,9 +52,9 @@ public class CCE_Attack : FSMState
     {
 
         // If the Player is too far away from the Player, he will change to the chasing state.
-        if (objects.DistanceToPlayer > TransitionDistance)
+        if (objects.SqrDistanceToPlayer > TransitionDistance)
 
-            if (objects.DistanceToPlayer > TransitionDistance)
+            if (objects.SqrDistanceToPlayer > TransitionDistance)
             {
                 npc.GetComponent<NPCControl>().SetTransition(Transition.SawPlayer);
             }

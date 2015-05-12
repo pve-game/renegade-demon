@@ -93,9 +93,9 @@ public class CCE_Search : FSMState
 
 
         // If the NPC sees the Player he will chase the Player
-        if (detectionSee.detected && objects.DistanceToPlayer > 25)
+        if (detectionSee.detected && objects.SqrDistanceToPlayer > 25)
 
-            if (detectionSee.detected && objects.DistanceToPlayer > 25)
+            if (detectionSee.detected && objects.SqrDistanceToPlayer > 25)
             {
                 npc.GetComponent<NPCControl>().SetTransition(Transition.SawPlayer);
             }

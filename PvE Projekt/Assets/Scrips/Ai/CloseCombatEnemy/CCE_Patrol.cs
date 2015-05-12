@@ -105,7 +105,7 @@ public class CCE_Patrol : FSMState
         }
 
         // If the NPC sees the Player he will start chasing him.
-        if (detectionSee.detected && objects.DistanceToPlayer > 4)
+        if (detectionSee.detected && objects.SqrDistanceToPlayer > 4)
         {
             npc.GetComponent<NPCControl>().SetTransition(Transition.SawPlayer);
         }

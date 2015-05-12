@@ -4,8 +4,6 @@ using UnityEngine;
 using System.Text;
 
 
-
-
 /// <summary>
 /// All types of NPC are stored here.
 /// </summary>
@@ -27,7 +25,7 @@ public class NPCControl : MonoBehaviour {
     public Transform PlayerPosition { get { return _player; } }
 
     private float _distance;
-    public float DistanceToPlayer { get { return _distance; } }
+    public float SqrDistanceToPlayer { get { return _distance; } }
 
     [SerializeField]
     private NPCTypes types;
@@ -125,6 +123,25 @@ public class NPCControl : MonoBehaviour {
     /// </summary>
     private void MakeFSM_Boss()
     {
-        Debug.LogError("This FSM is not implemented yet");
+        circlePlayer circle = GetComponent<circlePlayer>();
+        circle.AddTransition(Transition.B_fastAttack, StateID.B_Attack);
+        
+        fastAttack attack = GetComponent<fastAttack>();
+        attack.AddTransition(Transition.B_parry, StateID.B_Parry);
+        attack.AddTransition(Transition.B_escapeAttack, StateID.B_EscapeAttack);
+
+        parry parryAttack = GetComponent<parry>();
+        parryAttack.AddTransition(Transition.B_fastAttack, StateID.B_Attack);
+        parryAttack.AddTransition(Transition.B_circumnavigatePlayer, StateID.B_Circle);
+
+        escapeAttack escape = GetComponent<escapeAttack>();
+        escape.AddTransition(Transition.B_fastAttack, StateID.B_Attack);
+
+
+        fsm = new FSMSystem();
+        //fsm.AddState(circle);
+        fsm.AddState(attack);
+        fsm.AddState(parryAttack);
+        //fsm.AddState(escape);
     }
 }

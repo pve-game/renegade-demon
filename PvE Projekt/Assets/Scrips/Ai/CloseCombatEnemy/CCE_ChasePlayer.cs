@@ -82,7 +82,7 @@ public class CCE_ChasePlayer : FSMState {
         }
 
         // If the Player is in range, the NPC will attack the Player
-        if(objects.DistanceToPlayer <= AttackDistance)
+        if(objects.SqrDistanceToPlayer <= AttackDistance)
         {
             npc.GetComponent<NPCControl>().SetTransition(Transition.Attack);
         }

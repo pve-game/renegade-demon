@@ -13,6 +13,10 @@ public enum Transition
     A_LostPlayer,
     A_HeardSomething,
     A_SawPlayer,
+    B_circumnavigatePlayer,
+    B_fastAttack,
+    B_escapeAttack,
+    B_parry,
 }
 
 public enum StateID
@@ -25,6 +29,10 @@ public enum StateID
     A_Idle,
     A_Attentive,
     A_Attack,
+    B_Circle,
+    B_Attack,
+    B_EscapeAttack,
+    B_Parry,
 }
 
 public abstract class FSMState : MonoBehaviour
