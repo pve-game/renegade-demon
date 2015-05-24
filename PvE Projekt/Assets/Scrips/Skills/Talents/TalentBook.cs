@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+
 /// <summary>
 /// Container for talent selection
 /// </summary>
@@ -52,6 +53,12 @@ public class TalentBook : MonoBehaviour
         talents = new List<Talent>();
         talentPoints = maximumTalentPoints;
         talentUIelements = new List<Toggle>();
+    }
+
+    public void Start()
+    {
+        EventManager.Instance.SendMessage<TalentPointsChanged>(new TalentPointsChanged(gameObject, talentPoints));
+        //Message<TalentPointsChanged>.Post(new TalentPointsChanged(talentPoints));
     }
 
     public void AddTalent(Talent t)
@@ -131,6 +138,9 @@ public class TalentBook : MonoBehaviour
     private void LearnTalent()
     {
         talentPoints = Mathf.Clamp(--talentPoints, 0, maximumTalentPoints);
+        EventManager.Instance.SendMessage<TalentPointsChanged>(new TalentPointsChanged(gameObject, talentPoints));
+
+        //Message.Post<TalentPointsChanged>(new TalentPointsChanged(talentPoints)); //replace with custom
     }
 
     /// <summary>
@@ -139,6 +149,9 @@ public class TalentBook : MonoBehaviour
     private void UnlearnTalent()
     {
         talentPoints = Mathf.Clamp(++talentPoints, 0, maximumTalentPoints);
+        EventManager.Instance.SendMessage<TalentPointsChanged>(new TalentPointsChanged(gameObject, talentPoints));
+
+        //Message.Post<TalentPointsChanged>(new TalentPointsChanged(talentPoints)); //custom todo
     }
 
     /// <summary>
