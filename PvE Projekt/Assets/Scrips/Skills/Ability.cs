@@ -37,6 +37,13 @@ public abstract class Ability : MonoBehaviour
     public float Cooldown { get { return cooldown; } }
 
     /// <summary>
+    /// Mana Cost of the ability
+    /// </summary>
+    [SerializeField]
+    protected int manaCost = 0;
+
+    public int ManaCost { get { return manaCost; } }
+    /// <summary>
     /// Description of the spell
     /// </summary>
     [SerializeField]
@@ -61,6 +68,7 @@ public abstract class Ability : MonoBehaviour
     private bool canLevel = false;
  
     protected Experience skillExperience = null;
+    protected Mana mana = null;
    
     [SerializeField]
     protected int experiencePerSuccessfulUsage = 1;
@@ -78,6 +86,7 @@ public abstract class Ability : MonoBehaviour
     {
         //save the time at the beginning of the frame
         timeSinceLastUse = Time.time;
+        LoseMana();
     }
     protected void GainExperience()
     {
@@ -87,11 +96,18 @@ public abstract class Ability : MonoBehaviour
         }
     }
 
+    protected void LoseMana()
+    {
+        mana.addMana(-manaCost);
+        Debug.Log("losemana");
+    }
+
     protected virtual void Initialize()
     {
         if (canLevel)
         {
             skillExperience = new Experience();
+        mana = GetComponent<Mana>();
             skillExperience.ExperienceIncrease = experienceIncreaseRate;
         }
     }

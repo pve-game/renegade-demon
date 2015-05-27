@@ -3,7 +3,6 @@ using System.Collections;
 
 public class InputKeyboard : IInput {
 
-	// Use this for initialization
     public Vector2 UseKeyboardInput()
     {
         Vector2 movementDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -28,6 +27,17 @@ public class InputKeyboard : IInput {
     public bool UseAttackButton()
     {
         bool Use = Input.GetButtonDown("Fire1");
+        return Use;
+    }
+
+    public bool UseSkillmenuButton()
+    {
+        bool Use = Input.GetButtonDown("Menu");
+        return Use;
+    }
+    public bool UseRunButton()
+    {
+        bool Use = Input.GetButton("Run");
         return Use;
     }
 }

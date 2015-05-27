@@ -1,0 +1,688 @@
+fileFormatVersion: 2
+guid: b6fb201672120cb44942b7a368cfa0cd
+timeCreated: 1432627928
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Brustkorb_oben
+    100004: Brustkorb_oben 1
+    100006: Brustkorb_oben_C
+    100008: Brustkorb_unten
+    100010: Brustkorb_unten 1
+    100012: Brustkorb_unten_C
+    100014: character:Group1
+    100016: Character_Root
+    100018: cluster1Handle
+    100020: cluster2Handle
+    100022: cluster3Handle
+    100024: cluster4Handle
+    100026: curve1
+    100028: Daumen_links_01
+    100030: Daumen_links_01 1
+    100032: Daumen_links_01_C
+    100034: Daumen_links_02
+    100036: Daumen_links_02 1
+    100038: Daumen_links_02_C
+    100040: Daumen_links_03
+    100042: Daumen_links_03 1
+    100044: Daumen_links_03_C
+    100046: Daumen_links_04_BE
+    100048: Daumen_links_04_BE 1
+    100050: Daumen_links_04_C
+    100052: Daumen_rechts_01
+    100054: Daumen_rechts_01 1
+    100056: Daumen_rechts_01_C
+    100058: Daumen_rechts_02
+    100060: Daumen_rechts_02 1
+    100062: Daumen_rechts_02_C
+    100064: Daumen_rechts_03
+    100066: Daumen_rechts_03 1
+    100068: Daumen_rechts_03_C
+    100070: Daumen_rechts_04_BE
+    100072: Daumen_rechts_04_BE 1
+    100074: Daumen_rechts_04_C
+    100076: Ellebogen_links
+    100078: Ellebogen_links 1
+    100080: Ellebogen_rechts
+    100082: Ellebogen_rechts 1
+    100084: Fussballen_links
+    100086: Fussballen_links 1
+    100088: Fussballen_links_C
+    100090: Fussballen_rechts
+    100092: Fussballen_rechts 1
+    100094: Fussballen_rechts_C
+    100096: Fussgelenk_links
+    100098: Fussgelenk_links 1
+    100100: Fussgelenk_links_C
+    100102: Fussgelenk_rechts
+    100104: Fussgelenk_rechts 1
+    100106: Fussgelenk_rechts_C
+    100108: Genick
+    100110: Genick 1
+    100112: Genick_C
+    100114: group
+    100116: Hals
+    100118: Hals 1
+    100120: Hals_C
+    100122: Handgelenk_links
+    100124: Handgelenk_links 1
+    100126: Handgelenk_links_C
+    100128: Handgelenk_rechts
+    100130: Handgelenk_rechts 1
+    100132: Handgelenk_rechts_C
+    100134: helper
+    100136: Huefte
+    100138: Huefte1
+    100140: "H\xFCfte_C"
+    100142: ikHandle1
+    100144: ikHandle2
+    100146: ikHandle4
+    100148: ikHandle5
+    100150: ikrp_LeftArm01
+    100152: Kinn_BE
+    100154: Kinn_BE 1
+    100156: kleiner_Finger_links_01
+    100158: kleiner_Finger_links_01 1
+    100160: kleiner_Finger_links_01_C
+    100162: kleiner_Finger_links_02
+    100164: kleiner_Finger_links_02 1
+    100166: kleiner_Finger_links_02_C
+    100168: kleiner_Finger_links_03
+    100170: kleiner_Finger_links_03 1
+    100172: kleiner_Finger_links_03_C
+    100174: kleiner_Finger_links_04_BE
+    100176: kleiner_Finger_links_04_BE 1
+    100178: kleiner_Finger_rechts_01
+    100180: kleiner_Finger_rechts_01 1
+    100182: kleiner_Finger_rechts_01_C
+    100184: kleiner_Finger_rechts_02
+    100186: kleiner_Finger_rechts_02 1
+    100188: kleiner_Finger_rechts_02_C
+    100190: kleiner_Finger_rechts_03
+    100192: kleiner_Finger_rechts_03 1
+    100194: kleiner_Finger_rechts_03_C
+    100196: kleiner_Finger_rechts_04_BE
+    100198: kleiner_Finger_rechts_04_BE 1
+    100200: Knie_links
+    100202: Knie_links 1
+    100204: Knie_rechts
+    100206: Knie_rechts 1
+    100208: Kopf
+    100210: Kopf 1
+    100212: mainCTRL
+    100214: Mittelfinger_links_01
+    100216: Mittelfinger_links_01 1
+    100218: Mittelfinger_links_01_C
+    100220: Mittelfinger_links_02
+    100222: Mittelfinger_links_02 1
+    100224: Mittelfinger_links_02_C
+    100226: Mittelfinger_links_03
+    100228: Mittelfinger_links_03 1
+    100230: Mittelfinger_links_03_C
+    100232: Mittelfinger_links_04_BE
+    100234: Mittelfinger_links_04_BE 1
+    100236: Mittelfinger_rechts_01
+    100238: Mittelfinger_rechts_01 1
+    100240: Mittelfinger_rechts_01_C
+    100242: Mittelfinger_rechts_02
+    100244: Mittelfinger_rechts_02 1
+    100246: Mittelfinger_rechts_02_C
+    100248: Mittelfinger_rechts_03
+    100250: Mittelfinger_rechts_03 1
+    100252: Mittelfinger_rechts_03_C
+    100254: Mittelfinger_rechts_04_BE
+    100256: Mittelfinger_rechts_04_BE 1
+    100258: Mittelfinger_rechts_04_BE 2
+    100260: Mittelfinger_rechts_04_BE 3
+    100262: Mittelfinger_rechts_05
+    100264: Mittelfinger_rechts_05 1
+    100266: Oberarm_links
+    100268: Oberarm_links 1
+    100270: Oberarm_rechts
+    100272: Oberarm_rechts 1
+    100274: Oberschenkel_rechts
+    100276: Oberschenkel_rechts 1
+    100278: Oberschnkel_links
+    100280: Oberschnkel_links 1
+    100282: pasted__Brustkorb_oben
+    100284: pasted__Brustkorb_unten
+    100286: pasted__Character_Root
+    100288: pasted__Daumen_links_01
+    100290: pasted__Daumen_links_02
+    100292: pasted__Daumen_links_03
+    100294: pasted__Daumen_links_04_BE
+    100296: pasted__Daumen_rechts_01
+    100298: pasted__Daumen_rechts_02
+    100300: pasted__Daumen_rechts_03
+    100302: pasted__Daumen_rechts_04_BE
+    100304: pasted__Ellebogen_links
+    100306: pasted__Ellebogen_rechts
+    100308: pasted__Fussballen_links
+    100310: pasted__Fussballen_rechts
+    100312: pasted__Fussgelenk_links
+    100314: pasted__Fussgelenk_rechts
+    100316: pasted__Genick
+    100318: pasted__Hals
+    100320: pasted__Handgelenk_links
+    100322: pasted__Handgelenk_rechts
+    100324: pasted__Huefte
+    100326: "pasted__H\xFCfte_C"
+    100328: pasted__Kinn_BE
+    100330: pasted__kleiner_Finger_links_01
+    100332: pasted__kleiner_Finger_links_02
+    100334: pasted__kleiner_Finger_links_03
+    100336: pasted__kleiner_Finger_links_04_BE
+    100338: pasted__kleiner_Finger_rechts_01
+    100340: pasted__kleiner_Finger_rechts_02
+    100342: pasted__kleiner_Finger_rechts_03
+    100344: pasted__kleiner_Finger_rechts_04_BE
+    100346: pasted__Knie_links
+    100348: pasted__Knie_rechts
+    100350: pasted__Kopf
+    100352: pasted__mainCTRL
+    100354: pasted__Mittelfinger_links_01
+    100356: pasted__Mittelfinger_links_02
+    100358: pasted__Mittelfinger_links_03
+    100360: pasted__Mittelfinger_links_04_BE
+    100362: pasted__Mittelfinger_rechts_01
+    100364: pasted__Mittelfinger_rechts_02
+    100366: pasted__Mittelfinger_rechts_03
+    100368: pasted__Mittelfinger_rechts_04_BE
+    100370: pasted__Mittelfinger_rechts_04_BE 1
+    100372: pasted__Mittelfinger_rechts_05
+    100374: pasted__Oberarm_links
+    100376: pasted__Oberarm_rechts
+    100378: pasted__Oberschenkel_rechts
+    100380: pasted__Oberschnkel_links
+    100382: pasted__Ringfinger_links_01
+    100384: pasted__Ringfinger_links_02
+    100386: pasted__Ringfinger_links_03
+    100388: pasted__Ringfinger_links_04_BE
+    100390: pasted__Ringfinger_rechts_01
+    100392: pasted__Ringfinger_rechts_02
+    100394: pasted__Ringfinger_rechts_03
+    100396: pasted__Ringfinger_rechts_04_BE
+    100398: pasted__Schulter_links
+    100400: pasted__Schulter_rechts
+    100402: pasted__Taille
+    100404: pasted__Zehen_links
+    100406: pasted__Zehen_rechts
+    100408: pasted__Zeigefinger_links_01
+    100410: pasted__Zeigefinger_links_02
+    100412: pasted__Zeigefinger_links_03
+    100414: pasted__Zeigefinger_links_04_BE
+    100416: pasted__Zeigefinger_rechts_01
+    100418: pasted__Zeigefinger_rechts_02
+    100420: pasted__Zeigefinger_rechts_02 1
+    100422: pasted__Zeigefinger_rechts_03
+    100424: pasted__Zeigefinger_rechts_03 1
+    100426: pasted__Zeigefinger_rechts_04_BE
+    100428: pasted__Zeigefinger_rechts_04_BE 1
+    100430: pasted__Zeigefinger_rechts_05
+    100432: pasted__Zopf_01
+    100434: pasted__Zopf_02
+    100436: pasted__Zopf_03
+    100438: pasted__Zopf_04
+    100440: pasted__Zopf_05_BE
+    100442: pasted__Zopf_Ansatz
+    100444: Polevector_Links
+    100446: Polevector_Links1
+    100448: Polevector_Links2
+    100450: Polevector_Links3
+    100452: Ringfinger_links_01
+    100454: Ringfinger_links_01 1
+    100456: Ringfinger_links_01_C
+    100458: Ringfinger_links_02
+    100460: Ringfinger_links_02 1
+    100462: Ringfinger_links_02_C
+    100464: Ringfinger_links_03
+    100466: Ringfinger_links_03 1
+    100468: Ringfinger_links_03_C
+    100470: Ringfinger_links_04_BE
+    100472: Ringfinger_links_04_BE 1
+    100474: Ringfinger_rechts_01
+    100476: Ringfinger_rechts_01 1
+    100478: Ringfinger_rechts_01_C
+    100480: Ringfinger_rechts_02
+    100482: Ringfinger_rechts_02 1
+    100484: Ringfinger_rechts_02_C
+    100486: Ringfinger_rechts_03
+    100488: Ringfinger_rechts_03 1
+    100490: Ringfinger_rechts_03_C
+    100492: Ringfinger_rechts_04_BE
+    100494: Ringfinger_rechts_04_BE 1
+    100496: Schulter_links
+    100498: Schulter_links 1
+    100500: Schulter_links_C
+    100502: Schulter_rechts
+    100504: Schulter_rechts 1
+    100506: Schulter_rechts_C
+    100508: Schwert_Main_Character:Cylinder001
+    100510: Taille
+    100512: Taille 1
+    100514: Taille 2
+    100516: Zehen_links
+    100518: Zehen_links 1
+    100520: Zehen_rechts
+    100522: Zehen_rechts 1
+    100524: Zeigefinger_links_01
+    100526: Zeigefinger_links_01 1
+    100528: Zeigefinger_links_01_C
+    100530: Zeigefinger_links_02
+    100532: Zeigefinger_links_02 1
+    100534: Zeigefinger_links_02_C
+    100536: Zeigefinger_links_03
+    100538: Zeigefinger_links_03 1
+    100540: Zeigefinger_links_03_C
+    100542: Zeigefinger_links_04_BE
+    100544: Zeigefinger_links_04_BE 1
+    100546: Zeigefinger_rechts_01
+    100548: Zeigefinger_rechts_01 1
+    100550: Zeigefinger_rechts_01_C
+    100552: Zeigefinger_rechts_02
+    100554: Zeigefinger_rechts_02 1
+    100556: Zeigefinger_rechts_02 2
+    100558: Zeigefinger_rechts_02 3
+    100560: Zeigefinger_rechts_02_C
+    100562: Zeigefinger_rechts_03
+    100564: Zeigefinger_rechts_03 1
+    100566: Zeigefinger_rechts_03 2
+    100568: Zeigefinger_rechts_03 3
+    100570: Zeigefinger_rechts_03_C
+    100572: Zeigefinger_rechts_04_BE
+    100574: Zeigefinger_rechts_04_BE 1
+    100576: Zeigefinger_rechts_04_BE 2
+    100578: Zeigefinger_rechts_04_BE 3
+    100580: Zeigefinger_rechts_05
+    100582: Zeigefinger_rechts_05 1
+    100584: Zopf_01
+    100586: Zopf_01 1
+    100588: Zopf_01_C
+    100590: Zopf_02
+    100592: Zopf_02 1
+    100594: Zopf_02_C
+    100596: Zopf_03
+    100598: Zopf_03 1
+    100600: Zopf_03_C
+    100602: Zopf_04
+    100604: Zopf_04 1
+    100606: Zopf_05_BE
+    100608: Zopf_05_BE 1
+    100610: Zopf_Ansatz
+    100612: Zopf_Ansatz 1
+    100614: Zopf_Ansatz_C
+    400000: //RootNode
+    400002: Brustkorb_oben
+    400004: Brustkorb_oben 1
+    400006: Brustkorb_oben_C
+    400008: Brustkorb_unten
+    400010: Brustkorb_unten 1
+    400012: Brustkorb_unten_C
+    400014: character:Group1
+    400016: Character_Root
+    400018: cluster1Handle
+    400020: cluster2Handle
+    400022: cluster3Handle
+    400024: cluster4Handle
+    400026: curve1
+    400028: Daumen_links_01
+    400030: Daumen_links_01 1
+    400032: Daumen_links_01_C
+    400034: Daumen_links_02
+    400036: Daumen_links_02 1
+    400038: Daumen_links_02_C
+    400040: Daumen_links_03
+    400042: Daumen_links_03 1
+    400044: Daumen_links_03_C
+    400046: Daumen_links_04_BE
+    400048: Daumen_links_04_BE 1
+    400050: Daumen_links_04_C
+    400052: Daumen_rechts_01
+    400054: Daumen_rechts_01 1
+    400056: Daumen_rechts_01_C
+    400058: Daumen_rechts_02
+    400060: Daumen_rechts_02 1
+    400062: Daumen_rechts_02_C
+    400064: Daumen_rechts_03
+    400066: Daumen_rechts_03 1
+    400068: Daumen_rechts_03_C
+    400070: Daumen_rechts_04_BE
+    400072: Daumen_rechts_04_BE 1
+    400074: Daumen_rechts_04_C
+    400076: Ellebogen_links
+    400078: Ellebogen_links 1
+    400080: Ellebogen_rechts
+    400082: Ellebogen_rechts 1
+    400084: Fussballen_links
+    400086: Fussballen_links 1
+    400088: Fussballen_links_C
+    400090: Fussballen_rechts
+    400092: Fussballen_rechts 1
+    400094: Fussballen_rechts_C
+    400096: Fussgelenk_links
+    400098: Fussgelenk_links 1
+    400100: Fussgelenk_links_C
+    400102: Fussgelenk_rechts
+    400104: Fussgelenk_rechts 1
+    400106: Fussgelenk_rechts_C
+    400108: Genick
+    400110: Genick 1
+    400112: Genick_C
+    400114: group
+    400116: Hals
+    400118: Hals 1
+    400120: Hals_C
+    400122: Handgelenk_links
+    400124: Handgelenk_links 1
+    400126: Handgelenk_links_C
+    400128: Handgelenk_rechts
+    400130: Handgelenk_rechts 1
+    400132: Handgelenk_rechts_C
+    400134: helper
+    400136: Huefte
+    400138: Huefte1
+    400140: "H\xFCfte_C"
+    400142: ikHandle1
+    400144: ikHandle2
+    400146: ikHandle4
+    400148: ikHandle5
+    400150: ikrp_LeftArm01
+    400152: Kinn_BE
+    400154: Kinn_BE 1
+    400156: kleiner_Finger_links_01
+    400158: kleiner_Finger_links_01 1
+    400160: kleiner_Finger_links_01_C
+    400162: kleiner_Finger_links_02
+    400164: kleiner_Finger_links_02 1
+    400166: kleiner_Finger_links_02_C
+    400168: kleiner_Finger_links_03
+    400170: kleiner_Finger_links_03 1
+    400172: kleiner_Finger_links_03_C
+    400174: kleiner_Finger_links_04_BE
+    400176: kleiner_Finger_links_04_BE 1
+    400178: kleiner_Finger_rechts_01
+    400180: kleiner_Finger_rechts_01 1
+    400182: kleiner_Finger_rechts_01_C
+    400184: kleiner_Finger_rechts_02
+    400186: kleiner_Finger_rechts_02 1
+    400188: kleiner_Finger_rechts_02_C
+    400190: kleiner_Finger_rechts_03
+    400192: kleiner_Finger_rechts_03 1
+    400194: kleiner_Finger_rechts_03_C
+    400196: kleiner_Finger_rechts_04_BE
+    400198: kleiner_Finger_rechts_04_BE 1
+    400200: Knie_links
+    400202: Knie_links 1
+    400204: Knie_rechts
+    400206: Knie_rechts 1
+    400208: Kopf
+    400210: Kopf 1
+    400212: mainCTRL
+    400214: Mittelfinger_links_01
+    400216: Mittelfinger_links_01 1
+    400218: Mittelfinger_links_01_C
+    400220: Mittelfinger_links_02
+    400222: Mittelfinger_links_02 1
+    400224: Mittelfinger_links_02_C
+    400226: Mittelfinger_links_03
+    400228: Mittelfinger_links_03 1
+    400230: Mittelfinger_links_03_C
+    400232: Mittelfinger_links_04_BE
+    400234: Mittelfinger_links_04_BE 1
+    400236: Mittelfinger_rechts_01
+    400238: Mittelfinger_rechts_01 1
+    400240: Mittelfinger_rechts_01_C
+    400242: Mittelfinger_rechts_02
+    400244: Mittelfinger_rechts_02 1
+    400246: Mittelfinger_rechts_02_C
+    400248: Mittelfinger_rechts_03
+    400250: Mittelfinger_rechts_03 1
+    400252: Mittelfinger_rechts_03_C
+    400254: Mittelfinger_rechts_04_BE
+    400256: Mittelfinger_rechts_04_BE 1
+    400258: Mittelfinger_rechts_04_BE 2
+    400260: Mittelfinger_rechts_04_BE 3
+    400262: Mittelfinger_rechts_05
+    400264: Mittelfinger_rechts_05 1
+    400266: Oberarm_links
+    400268: Oberarm_links 1
+    400270: Oberarm_rechts
+    400272: Oberarm_rechts 1
+    400274: Oberschenkel_rechts
+    400276: Oberschenkel_rechts 1
+    400278: Oberschnkel_links
+    400280: Oberschnkel_links 1
+    400282: pasted__Brustkorb_oben
+    400284: pasted__Brustkorb_unten
+    400286: pasted__Character_Root
+    400288: pasted__Daumen_links_01
+    400290: pasted__Daumen_links_02
+    400292: pasted__Daumen_links_03
+    400294: pasted__Daumen_links_04_BE
+    400296: pasted__Daumen_rechts_01
+    400298: pasted__Daumen_rechts_02
+    400300: pasted__Daumen_rechts_03
+    400302: pasted__Daumen_rechts_04_BE
+    400304: pasted__Ellebogen_links
+    400306: pasted__Ellebogen_rechts
+    400308: pasted__Fussballen_links
+    400310: pasted__Fussballen_rechts
+    400312: pasted__Fussgelenk_links
+    400314: pasted__Fussgelenk_rechts
+    400316: pasted__Genick
+    400318: pasted__Hals
+    400320: pasted__Handgelenk_links
+    400322: pasted__Handgelenk_rechts
+    400324: pasted__Huefte
+    400326: "pasted__H\xFCfte_C"
+    400328: pasted__Kinn_BE
+    400330: pasted__kleiner_Finger_links_01
+    400332: pasted__kleiner_Finger_links_02
+    400334: pasted__kleiner_Finger_links_03
+    400336: pasted__kleiner_Finger_links_04_BE
+    400338: pasted__kleiner_Finger_rechts_01
+    400340: pasted__kleiner_Finger_rechts_02
+    400342: pasted__kleiner_Finger_rechts_03
+    400344: pasted__kleiner_Finger_rechts_04_BE
+    400346: pasted__Knie_links
+    400348: pasted__Knie_rechts
+    400350: pasted__Kopf
+    400352: pasted__mainCTRL
+    400354: pasted__Mittelfinger_links_01
+    400356: pasted__Mittelfinger_links_02
+    400358: pasted__Mittelfinger_links_03
+    400360: pasted__Mittelfinger_links_04_BE
+    400362: pasted__Mittelfinger_rechts_01
+    400364: pasted__Mittelfinger_rechts_02
+    400366: pasted__Mittelfinger_rechts_03
+    400368: pasted__Mittelfinger_rechts_04_BE
+    400370: pasted__Mittelfinger_rechts_04_BE 1
+    400372: pasted__Mittelfinger_rechts_05
+    400374: pasted__Oberarm_links
+    400376: pasted__Oberarm_rechts
+    400378: pasted__Oberschenkel_rechts
+    400380: pasted__Oberschnkel_links
+    400382: pasted__Ringfinger_links_01
+    400384: pasted__Ringfinger_links_02
+    400386: pasted__Ringfinger_links_03
+    400388: pasted__Ringfinger_links_04_BE
+    400390: pasted__Ringfinger_rechts_01
+    400392: pasted__Ringfinger_rechts_02
+    400394: pasted__Ringfinger_rechts_03
+    400396: pasted__Ringfinger_rechts_04_BE
+    400398: pasted__Schulter_links
+    400400: pasted__Schulter_rechts
+    400402: pasted__Taille
+    400404: pasted__Zehen_links
+    400406: pasted__Zehen_rechts
+    400408: pasted__Zeigefinger_links_01
+    400410: pasted__Zeigefinger_links_02
+    400412: pasted__Zeigefinger_links_03
+    400414: pasted__Zeigefinger_links_04_BE
+    400416: pasted__Zeigefinger_rechts_01
+    400418: pasted__Zeigefinger_rechts_02
+    400420: pasted__Zeigefinger_rechts_02 1
+    400422: pasted__Zeigefinger_rechts_03
+    400424: pasted__Zeigefinger_rechts_03 1
+    400426: pasted__Zeigefinger_rechts_04_BE
+    400428: pasted__Zeigefinger_rechts_04_BE 1
+    400430: pasted__Zeigefinger_rechts_05
+    400432: pasted__Zopf_01
+    400434: pasted__Zopf_02
+    400436: pasted__Zopf_03
+    400438: pasted__Zopf_04
+    400440: pasted__Zopf_05_BE
+    400442: pasted__Zopf_Ansatz
+    400444: Polevector_Links
+    400446: Polevector_Links1
+    400448: Polevector_Links2
+    400450: Polevector_Links3
+    400452: Ringfinger_links_01
+    400454: Ringfinger_links_01 1
+    400456: Ringfinger_links_01_C
+    400458: Ringfinger_links_02
+    400460: Ringfinger_links_02 1
+    400462: Ringfinger_links_02_C
+    400464: Ringfinger_links_03
+    400466: Ringfinger_links_03 1
+    400468: Ringfinger_links_03_C
+    400470: Ringfinger_links_04_BE
+    400472: Ringfinger_links_04_BE 1
+    400474: Ringfinger_rechts_01
+    400476: Ringfinger_rechts_01 1
+    400478: Ringfinger_rechts_01_C
+    400480: Ringfinger_rechts_02
+    400482: Ringfinger_rechts_02 1
+    400484: Ringfinger_rechts_02_C
+    400486: Ringfinger_rechts_03
+    400488: Ringfinger_rechts_03 1
+    400490: Ringfinger_rechts_03_C
+    400492: Ringfinger_rechts_04_BE
+    400494: Ringfinger_rechts_04_BE 1
+    400496: Schulter_links
+    400498: Schulter_links 1
+    400500: Schulter_links_C
+    400502: Schulter_rechts
+    400504: Schulter_rechts 1
+    400506: Schulter_rechts_C
+    400508: Schwert_Main_Character:Cylinder001
+    400510: Taille
+    400512: Taille 1
+    400514: Taille 2
+    400516: Zehen_links
+    400518: Zehen_links 1
+    400520: Zehen_rechts
+    400522: Zehen_rechts 1
+    400524: Zeigefinger_links_01
+    400526: Zeigefinger_links_01 1
+    400528: Zeigefinger_links_01_C
+    400530: Zeigefinger_links_02
+    400532: Zeigefinger_links_02 1
+    400534: Zeigefinger_links_02_C
+    400536: Zeigefinger_links_03
+    400538: Zeigefinger_links_03 1
+    400540: Zeigefinger_links_03_C
+    400542: Zeigefinger_links_04_BE
+    400544: Zeigefinger_links_04_BE 1
+    400546: Zeigefinger_rechts_01
+    400548: Zeigefinger_rechts_01 1
+    400550: Zeigefinger_rechts_01_C
+    400552: Zeigefinger_rechts_02
+    400554: Zeigefinger_rechts_02 1
+    400556: Zeigefinger_rechts_02 2
+    400558: Zeigefinger_rechts_02 3
+    400560: Zeigefinger_rechts_02_C
+    400562: Zeigefinger_rechts_03
+    400564: Zeigefinger_rechts_03 1
+    400566: Zeigefinger_rechts_03 2
+    400568: Zeigefinger_rechts_03 3
+    400570: Zeigefinger_rechts_03_C
+    400572: Zeigefinger_rechts_04_BE
+    400574: Zeigefinger_rechts_04_BE 1
+    400576: Zeigefinger_rechts_04_BE 2
+    400578: Zeigefinger_rechts_04_BE 3
+    400580: Zeigefinger_rechts_05
+    400582: Zeigefinger_rechts_05 1
+    400584: Zopf_01
+    400586: Zopf_01 1
+    400588: Zopf_01_C
+    400590: Zopf_02
+    400592: Zopf_02 1
+    400594: Zopf_02_C
+    400596: Zopf_03
+    400598: Zopf_03 1
+    400600: Zopf_03_C
+    400602: Zopf_04
+    400604: Zopf_04 1
+    400606: Zopf_05_BE
+    400608: Zopf_05_BE 1
+    400610: Zopf_Ansatz
+    400612: Zopf_Ansatz 1
+    400614: Zopf_Ansatz_C
+    2300000: Schwert_Main_Character:Cylinder001
+    3300000: Schwert_Main_Character:Cylinder001
+    4300000: character:Group1
+    4300002: Schwert_Main_Character:Cylinder001
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: character:Group1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

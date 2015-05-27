@@ -1,7 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< .mine
+guid: 8dc83f8a400bc90469813f55afd613d1
+=======
 guid: 2865ccc8173c2b24d82cb66b33926a91
+>>>>>>> .r55
 folderAsset: yes
+<<<<<<< .mine
+timeCreated: 1429183103
+=======
 timeCreated: 1428418811
+>>>>>>> .r55
 licenseType: Free
 DefaultImporter:
   userData: 

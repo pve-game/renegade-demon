@@ -4,7 +4,7 @@ using System.Collections;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
-    public float smooth = 3f;
+    public float smooth = 5f;
     Transform standardPos;
 
     void Start()
